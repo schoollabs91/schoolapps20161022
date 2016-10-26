@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.TeacherSearchPageBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="#{schoolsystemuiBundle.TEACHER_SEARCH}" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+           <af:button text="Add New Teacher" id="b1" 
+                               actionListener="#{bindings.CreateInsert.execute}" action="addedit"
+                      icon="/images/s_Add.png"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout layout="vertical" id="pgl2">
+        
+          <af:query id="qryId1" headerText="Search" disclosed="true"
+                    value="#{bindings.TeacherSearchCriteriaQuery.queryDescriptor}"
+                    model="#{bindings.TeacherSearchCriteriaQuery.queryModel}"
+                    queryListener="#{bindings.TeacherSearchCriteriaQuery.processQuery}"
+                    queryOperationListener="#{bindings.TeacherSearchCriteriaQuery.processQueryOperation}" rows="2"
+                    maxColumns="2" fieldWidth="30" labelWidth="30" displayMode="compact" saveQueryMode="hidden"
+                    modeChangeVisible="false"/>
+        <af:panelHeader text="#{schoolsystemuiBundle.TEACHER_LIST}" id="ph2">
+          <f:facet name="context"/>
+          <f:facet name="menuBar"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="legend"/>
+          <f:facet name="info"/>
+          <af:listView value="#{bindings.STeacherVO1.collectionModel}" var="item"
+                     emptyText="#{bindings.STeacherVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                     fetchSize="#{bindings.STeacherVO1.rangeSize}" id="lv1">
+          <af:listItem id="li1">
+            <af:panelGridLayout id="pgl3">
+              <af:gridRow marginTop="2px" height="auto" marginBottom="2px" id="gr1">
+                <af:gridCell marginStart="2px" width="30%" id="gc1">
+                  <af:outputFormatted value="#{item.bindings.TId.inputValue}" id="of1"/>
+                </af:gridCell>
+                <af:gridCell marginStart="2px" width="70%" marginEnd="2px" id="gc2">
+                  <af:outputFormatted value="#{item.bindings.TFName.inputValue}" id="of2"/>
+                </af:gridCell>
+              </af:gridRow>
+            </af:panelGridLayout>
+          </af:listItem>
+        </af:listView>
+        </af:panelHeader>
+        
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

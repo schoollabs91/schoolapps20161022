@@ -1,0 +1,539 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="schoolsystemuiBundle1" value="#{adfBundle['schoolsystemui.fragments.ListOfValuesPageBundle']}"/>
+    <c:set var="schoolsystemuiBundle" value="#{adfBundle['com.lab.kot.school.ui.SchoolSystemUiBundle']}"/>
+   
+            <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelHeader text="#{schoolsystemuiBundle1.LIST_OF_SESSION__CLASS__SECTION_AND_SUBJECTS}" id="ph5">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar">
+                <af:toolbar id="t8">
+                    <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                               disabled="#{!bindings.Commit.enabled}" id="b1" icon="/images/sCheck.png"/>
+                    <af:button actionListener="#{bindings.Rollback.execute}" text="Back"
+                               disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b2" action="back"
+                               icon="/images/backsimple.png">
+                   
+                        <af:resetActionListener/>
+                    </af:button>
+                </af:toolbar>
+            </f:facet>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:panelGroupLayout id="pgl3" layout="vertical">
+            <af:panelTabbed position="above" id="pt2" dimensionsFrom="parent" styleClass="AFStretchWidth">
+                
+                    <af:showDetailItem id="tab1" text="School Session" disclosed="true" stretchChildren="first"
+                                       inflexibleHeight="500" flex="0" partialTriggers="pc5:b3 pc5:b4">
+                    <af:panelGroupLayout id="pgl5" layout="vertical">
+                        <af:panelCollection id="pc5" styleClass="AFStretchWidth" featuresOff="statusBar">
+                            <f:facet name="menus"/>
+                             <f:facet name="toolbar">
+                                <af:toolbar id="t4">
+                                        <af:button actionListener="#{bindings.CreateInsert2.execute}" text="Add"
+                                             disabled="#{!bindings.CreateInsert2.enabled}" id="b3"/>
+                                        <af:button actionListener="#{bindings.Delete2.execute}" text="Delete"
+                                             disabled="#{!bindings.Delete2.enabled}" id="b4" partialSubmit="true"
+                                             immediate="true"/>
+                                             
+                                </af:toolbar>
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.SSessionVO1.collectionModel}" var="row"
+                              rows="#{bindings.SSessionVO1.rangeSize}"
+                              emptyText="#{bindings.SSessionVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="1"
+                              selectedRowKeys="#{bindings.SSessionVO1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.SSessionVO1.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.SSessionVO1.rangeSize}"
+                              filterModel="#{bindings.SSessionVO1Query.queryDescriptor}"
+                              queryListener="#{bindings.SSessionVO1Query.processQuery}" filterVisible="true"
+                              varStatus="vs" id="t1" autoHeightRows="10" partialTriggers="::b3 ::b4 :::pc3:b7"
+                              styleClass="AFStretchWidth">
+                        <af:column sortProperty="#{bindings.SSessionVO1.hints.SessionId.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.SSessionVO1.hints.SessionId.label}" id="c1">
+                            <af:inputText value="#{row.bindings.SessionId.inputValue}"
+                                          label="#{bindings.SSessionVO1.hints.SessionId.label}"
+                                          required="#{bindings.SSessionVO1.hints.SessionId.mandatory}"
+                                          columns="#{bindings.SSessionVO1.hints.SessionId.displayWidth}"
+                                          maximumLength="#{bindings.SSessionVO1.hints.SessionId.precision}"
+                                          shortDesc="#{bindings.SSessionVO1.hints.SessionId.tooltip}" id="it1"
+                                          readOnly="true">
+                                <f:validator binding="#{row.bindings.SessionId.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.SSessionVO1.hints.SessionId.format}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SSessionVO1.hints.SessionCode.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.SSessionVO1.hints.SessionCode.label}" id="c4">
+                            <af:inputText value="#{row.bindings.SessionCode.inputValue}"
+                                          label="#{bindings.SSessionVO1.hints.SessionCode.label}"
+                                          required="#{bindings.SSessionVO1.hints.SessionCode.mandatory}"
+                                          columns="#{bindings.SSessionVO1.hints.SessionCode.displayWidth}"
+                                          maximumLength="#{bindings.SSessionVO1.hints.SessionCode.precision}"
+                                          shortDesc="#{bindings.SSessionVO1.hints.SessionCode.tooltip}" id="it3">
+                                <f:validator binding="#{row.bindings.SessionCode.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SSessionVO1.hints.SessionName.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.SSessionVO1.hints.SessionName.label}" id="c2"
+                                   width="200">
+                            <af:inputText value="#{row.bindings.SessionName.inputValue}"
+                                          label="#{bindings.SSessionVO1.hints.SessionName.label}"
+                                          required="#{bindings.SSessionVO1.hints.SessionName.mandatory}"
+                                          columns="#{bindings.SSessionVO1.hints.SessionName.displayWidth}"
+                                          maximumLength="#{bindings.SSessionVO1.hints.SessionName.precision}"
+                                          shortDesc="#{bindings.SSessionVO1.hints.SessionName.tooltip}" id="it2">
+                                <f:validator binding="#{row.bindings.SessionName.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.SSessionVO1.hints.SessionStartDate.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.SSessionVO1.hints.SessionStartDate.label}"
+                                   id="c3" width="150">
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.SSessionVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.SessionStartDate.value}"
+                                              id="id1">
+                                    <af:convertDateTime pattern="#{bindings.SSessionVO1.hints.SessionStartDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                            <af:inputDate value="#{row.bindings.SessionStartDate.inputValue}"
+                                          label="#{bindings.SSessionVO1.hints.SessionStartDate.label}"
+                                          required="#{bindings.SSessionVO1.hints.SessionStartDate.mandatory}"
+                                          columns="#{bindings.SSessionVO1.hints.SessionStartDate.displayWidth}"
+                                          shortDesc="#{bindings.SSessionVO1.hints.SessionStartDate.tooltip}" id="id2">
+                                <f:validator binding="#{row.bindings.SessionStartDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.SSessionVO1.hints.SessionStartDate.format}"/>
+                            </af:inputDate>
+                        </af:column>
+                        
+                        <af:column sortProperty="#{bindings.SSessionVO1.hints.SessionEndDate.name}" filterable="true"
+                                   sortable="true" headerText="#{bindings.SSessionVO1.hints.SessionEndDate.label}"
+                                   id="c5" width="150">
+                            <f:facet name="filter">
+                                <af:inputDate value="#{bindings.SSessionVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.SessionEndDate.value}"
+                                              id="id3">
+                                    <af:convertDateTime pattern="#{bindings.SSessionVO1.hints.SessionEndDate.format}"/>
+                                </af:inputDate>
+                            </f:facet>
+                            <af:inputDate value="#{row.bindings.SessionEndDate.inputValue}"
+                                          label="#{bindings.SSessionVO1.hints.SessionEndDate.label}"
+                                          required="#{bindings.SSessionVO1.hints.SessionEndDate.mandatory}"
+                                          columns="#{bindings.SSessionVO1.hints.SessionEndDate.displayWidth}"
+                                          shortDesc="#{bindings.SSessionVO1.hints.SessionEndDate.tooltip}" id="id4">
+                                <f:validator binding="#{row.bindings.SessionEndDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.SSessionVO1.hints.SessionEndDate.format}"/>
+                            </af:inputDate>
+                        </af:column>
+                                <af:column sortProperty="#{bindings.SSessionVO1.hints.ActiveYn.name}" filterable="true"
+                                           sortable="true" headerText="#{bindings.SSessionVO1.hints.ActiveYn.label}"
+                                           id="c6">
+                                    <af:panelGroupLayout id="pgl2" layout="vertical">
+                                        <af:selectBooleanCheckbox text="" id="sbc1"
+                                                                  value="#{row.bindings.ActiveYn.inputValue}">
+                                            <f:converter converterId="YNConverter"/>
+                                        </af:selectBooleanCheckbox>
+                                        
+                                    </af:panelGroupLayout>
+                                    <f:facet name="filter">
+                                        <af:selectBooleanCheckbox text="" id="sbc11"
+                                                                  value="#{bindings.SSessionVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ActiveYn.value}">
+                                            <f:converter converterId="YNConverter"/>
+                                        </af:selectBooleanCheckbox>
+                                    </f:facet>
+                                </af:column>
+                            </af:table>
+                        </af:panelCollection>
+                        
+                </af:panelGroupLayout>
+                    </af:showDetailItem>
+                    <af:showDetailItem id="tab2" text="Classes" stretchChildren="first" inflexibleHeight="500">
+                    <af:panelGroupLayout id="pgl6" layout="vertical">
+                        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+                            <f:facet name="menus"/>
+                             <f:facet name="toolbar">
+                                <af:toolbar id="t5">
+                                <af:button actionListener="#{bindings.CreateInsert3.execute}" text="Add"
+                                             disabled="#{!bindings.CreateInsert3.enabled}" id="b5"/>
+                                        <af:button actionListener="#{bindings.Delete3.execute}" text="Delete"
+                                             disabled="#{!bindings.Delete3.enabled}" id="b51" partialSubmit="true"
+                                             immediate="true"/>
+                            </af:toolbar>
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            
+                            <af:table value="#{bindings.SClassVO1.collectionModel}" var="row"
+                                  rows="#{bindings.SClassVO1.rangeSize}"
+                                  emptyText="#{bindings.SClassVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="1"
+                                  selectedRowKeys="#{bindings.SClassVO1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.SClassVO1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.SClassVO1.rangeSize}"
+                                  filterModel="#{bindings.SClassVO1Query.queryDescriptor}"
+                                  queryListener="#{bindings.SClassVO1Query.processQuery}" filterVisible="true"
+                                  varStatus="vs" id="t9" partialTriggers="::b5 ::b51" columnBandingInterval="0"
+                                      autoHeightRows="0" inlineStyle="height:600px;">
+                            <af:column sortProperty="#{bindings.SClassVO1.hints.ClassId.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SClassVO1.hints.ClassId.label}" id="c11">
+                                <af:inputText value="#{row.bindings.ClassId.inputValue}"
+                                              label="#{bindings.SClassVO1.hints.ClassId.label}"
+                                              required="#{bindings.SClassVO1.hints.ClassId.mandatory}"
+                                              columns="#{bindings.SClassVO1.hints.ClassId.displayWidth}"
+                                              maximumLength="#{bindings.SClassVO1.hints.ClassId.precision}"
+                                              shortDesc="#{bindings.SClassVO1.hints.ClassId.tooltip}" id="it4"
+                                              readOnly="true">
+                                    <f:validator binding="#{row.bindings.ClassId.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.SClassVO1.hints.ClassId.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SClassVO1.hints.ClassCode.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SClassVO1.hints.ClassCode.label}"
+                                       id="c12" width="150">
+                                <af:inputText value="#{row.bindings.ClassCode.inputValue}"
+                                              label="#{bindings.SClassVO1.hints.ClassCode.label}"
+                                              required="#{bindings.SClassVO1.hints.ClassCode.mandatory}"
+                                              columns="#{bindings.SClassVO1.hints.ClassCode.displayWidth}"
+                                              maximumLength="#{bindings.SClassVO1.hints.ClassCode.precision}"
+                                              shortDesc="#{bindings.SClassVO1.hints.ClassCode.tooltip}" id="it8">
+                                    <f:validator binding="#{row.bindings.ClassCode.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SClassVO1.hints.ClassName.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SClassVO1.hints.ClassName.label}"
+                                       id="c18" width="200">
+                                <af:inputText value="#{row.bindings.ClassName.inputValue}"
+                                              label="#{bindings.SClassVO1.hints.ClassName.label}"
+                                              required="#{bindings.SClassVO1.hints.ClassName.mandatory}"
+                                              columns="#{bindings.SClassVO1.hints.ClassName.displayWidth}"
+                                              maximumLength="#{bindings.SClassVO1.hints.ClassName.precision}"
+                                              shortDesc="#{bindings.SClassVO1.hints.ClassName.tooltip}" id="it13">
+                                    <f:validator binding="#{row.bindings.ClassName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SClassVO1.hints.ActiveYn.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SClassVO1.hints.ActiveYn.label}" id="c19">
+                                <af:inputText value="#{row.bindings.ActiveYn.inputValue}"
+                                              label="#{bindings.SClassVO1.hints.ActiveYn.label}"
+                                              required="#{bindings.SClassVO1.hints.ActiveYn.mandatory}"
+                                              columns="#{bindings.SClassVO1.hints.ActiveYn.displayWidth}"
+                                              maximumLength="#{bindings.SClassVO1.hints.ActiveYn.precision}"
+                                              shortDesc="#{bindings.SClassVO1.hints.ActiveYn.tooltip}" id="it14"
+                                              rendered="false">
+                                    <f:validator binding="#{row.bindings.ActiveYn.validator}"/>
+                                </af:inputText>
+                                  <af:selectBooleanCheckbox text=""  id="sbc5" value="#{row.bindings.ActiveYn.inputValue}">
+                                <f:converter converterId="YNConverter"/>
+                            </af:selectBooleanCheckbox>
+                              <f:facet name="filter">
+                                        <af:selectBooleanCheckbox text="" id="sbc12"
+                                                                  value="#{bindings.SClassVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ActiveYn.value}">
+                                            <f:converter converterId="YNConverter"/>
+                                        </af:selectBooleanCheckbox>
+                                    </f:facet>
+                            </af:column>
+                        </af:table>
+                        
+                        </af:panelCollection>
+                      
+                    </af:panelGroupLayout>
+                    </af:showDetailItem>
+                    <af:showDetailItem id="tab3" text="Sections" stretchChildren="first">
+                    <af:panelGroupLayout id="pgl8" layout="vertical">
+                        <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar">
+                                <af:toolbar id="t6">
+                                   <af:button actionListener="#{bindings.CreateInsert1.execute}" text="Add"
+                                             disabled="#{!bindings.CreateInsert1.enabled}" id="b6"/>
+                                        <af:button actionListener="#{bindings.Delete1.execute}" text="Delete"
+                                             disabled="#{!bindings.Delete1.enabled}" id="b61" partialSubmit="true"
+                                             immediate="true"/>
+                                </af:toolbar>
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.SSectionVO1.collectionModel}" var="row"
+                                      rows="#{bindings.SSectionVO1.rangeSize}"
+                                      emptyText="#{bindings.SSectionVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="1"
+                                      selectedRowKeys="#{bindings.SSectionVO1.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.SSectionVO1.collectionModel.makeCurrent}"
+                                      rowSelection="single" fetchSize="#{bindings.SSectionVO1.rangeSize}"
+                                      filterModel="#{bindings.SSectionVO1Query.queryDescriptor}"
+                                      queryListener="#{bindings.SSectionVO1Query.processQuery}" filterVisible="true"
+                                      varStatus="vs" id="t2" partialTriggers="::b6 ::b61" styleClass="AFStretchWidth"
+                                      autoHeightRows="0">
+                                <af:column sortProperty="#{bindings.SSectionVO1.hints.SectionId.name}" filterable="true"
+                                           sortable="true" headerText="#{bindings.SSectionVO1.hints.SectionId.label}"
+                                           id="c7">
+                                    <af:inputText value="#{row.bindings.SectionId.inputValue}"
+                                                  label="#{bindings.SSectionVO1.hints.SectionId.label}"
+                                                  required="#{bindings.SSectionVO1.hints.SectionId.mandatory}"
+                                                  columns="#{bindings.SSectionVO1.hints.SectionId.displayWidth}"
+                                                  maximumLength="#{bindings.SSectionVO1.hints.SectionId.precision}"
+                                                  shortDesc="#{bindings.SSectionVO1.hints.SectionId.tooltip}" id="it5"
+                                                  readOnly="true">
+                                        <f:validator binding="#{row.bindings.SectionId.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.SSectionVO1.hints.SectionId.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SSectionVO1.hints.SectionCode.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SSectionVO1.hints.SectionCode.label}" id="c8"
+                                           width="150">
+                                    <af:inputText value="#{row.bindings.SectionCode.inputValue}"
+                                                  label="#{bindings.SSectionVO1.hints.SectionCode.label}"
+                                                  required="#{bindings.SSectionVO1.hints.SectionCode.mandatory}"
+                                                  columns="#{bindings.SSectionVO1.hints.SectionCode.displayWidth}"
+                                                  maximumLength="#{bindings.SSectionVO1.hints.SectionCode.precision}"
+                                                  shortDesc="#{bindings.SSectionVO1.hints.SectionCode.tooltip}"
+                                                  id="it6">
+                                        <f:validator binding="#{row.bindings.SectionCode.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.SSectionVO1.hints.SectionName.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SSectionVO1.hints.SectionName.label}" id="c9"
+                                           width="200">
+                                    <af:inputText value="#{row.bindings.SectionName.inputValue}"
+                                                  label="#{bindings.SSectionVO1.hints.SectionName.label}"
+                                                  required="#{bindings.SSectionVO1.hints.SectionName.mandatory}"
+                                                  columns="#{bindings.SSectionVO1.hints.SectionName.displayWidth}"
+                                                  maximumLength="#{bindings.SSectionVO1.hints.SectionName.precision}"
+                                                  shortDesc="#{bindings.SSectionVO1.hints.SectionName.tooltip}"
+                                                  id="it7">
+                                        <f:validator binding="#{row.bindings.SectionName.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                    <af:column sortProperty="#{bindings.SSectionVO1.hints.ActiveYn.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.SSectionVO1.hints.ActiveYn.label}" id="c10">
+                                        <af:selectBooleanCheckbox text="" id="sbc2"
+                                                                  value="#{row.bindings.ActiveYn.inputValue}">
+                                            <f:converter converterId="YNConverter"/>
+                                        </af:selectBooleanCheckbox>
+                                        <f:facet name="filter">
+                                            <af:selectBooleanCheckbox text="" id="sbc171"
+                                                                      value="#{bindings.SSectionVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ActiveYn.value}">
+                                                <f:converter converterId="YNConverter"/>
+                                            </af:selectBooleanCheckbox>
+                                        </f:facet>
+                                    </af:column>
+                                </af:table>
+                        </af:panelCollection>
+                     
+                        </af:panelGroupLayout>
+                    </af:showDetailItem>
+                    <af:showDetailItem id="tab4" text="Subjects" stretchChildren="first">
+                    <af:panelGroupLayout id="pgl10" layout="vertical">
+                        <af:panelCollection id="pc3" styleClass="AFStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar">
+                                <af:toolbar id="t7">
+                                   <af:button actionListener="#{bindings.CreateInsert2.execute}" text="Add"
+                                             disabled="#{!bindings.CreateInsert2.enabled}" id="b7"
+                                              icon="/images/s_Add.png"/>
+                                        <af:button actionListener="#{bindings.Delete2.execute}" text="Delete"
+                                             disabled="#{!bindings.Delete2.enabled}" id="b71" partialSubmit="true"
+                                             immediate="true"/>
+                                </af:toolbar>
+                            </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.SSubjectsVO1.collectionModel}" var="row"
+                                  rows="#{bindings.SSubjectsVO1.rangeSize}"
+                                  emptyText="#{bindings.SSubjectsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="1"
+                                  selectedRowKeys="#{bindings.SSubjectsVO1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.SSubjectsVO1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.SSubjectsVO1.rangeSize}"
+                                  filterModel="#{bindings.SSubjectsVO1Query.queryDescriptor}"
+                                  queryListener="#{bindings.SSubjectsVO1Query.processQuery}" filterVisible="true"
+                                  varStatus="vs" id="t3" partialTriggers="::b7 ::b71" autoHeightRows="20"
+                                       styleClass="AFStretchWidth">
+                            <af:column sortProperty="#{bindings.SSubjectsVO1.hints.SubjectId.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SSubjectsVO1.hints.SubjectId.label}"
+                                       id="c13">
+                                <af:inputText value="#{row.bindings.SubjectId.inputValue}"
+                                              label="#{bindings.SSubjectsVO1.hints.SubjectId.label}"
+                                              required="#{bindings.SSubjectsVO1.hints.SubjectId.mandatory}"
+                                              columns="#{bindings.SSubjectsVO1.hints.SubjectId.displayWidth}"
+                                              maximumLength="#{bindings.SSubjectsVO1.hints.SubjectId.precision}"
+                                              shortDesc="#{bindings.SSubjectsVO1.hints.SubjectId.tooltip}" id="it9"
+                                              readOnly="true">
+                                    <f:validator binding="#{row.bindings.SubjectId.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.SSubjectsVO1.hints.SubjectId.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SSubjectsVO1.hints.SubjectCode.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SSubjectsVO1.hints.SubjectCode.label}"
+                                       id="c15" width="150">
+                                <af:inputText value="#{row.bindings.SubjectCode.inputValue}"
+                                              label="#{bindings.SSubjectsVO1.hints.SubjectCode.label}"
+                                              required="#{bindings.SSubjectsVO1.hints.SubjectCode.mandatory}"
+                                              columns="#{bindings.SSubjectsVO1.hints.SubjectCode.displayWidth}"
+                                              maximumLength="#{bindings.SSubjectsVO1.hints.SubjectCode.precision}"
+                                              shortDesc="#{bindings.SSubjectsVO1.hints.SubjectCode.tooltip}" id="it11">
+                                    <f:validator binding="#{row.bindings.SubjectCode.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                             <af:column sortProperty="#{bindings.SSubjectsVO1.hints.SubjectName.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SSubjectsVO1.hints.SubjectName.label}"
+                                       id="c14" width="200">
+                                <af:inputText value="#{row.bindings.SubjectName.inputValue}"
+                                              label="#{bindings.SSubjectsVO1.hints.SubjectName.label}"
+                                              required="#{bindings.SSubjectsVO1.hints.SubjectName.mandatory}"
+                                              columns="#{bindings.SSubjectsVO1.hints.SubjectName.displayWidth}"
+                                              maximumLength="#{bindings.SSubjectsVO1.hints.SubjectName.precision}"
+                                              shortDesc="#{bindings.SSubjectsVO1.hints.SubjectName.tooltip}" id="it10">
+                                    <f:validator binding="#{row.bindings.SubjectName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SSubjectsVO1.hints.SubjectDesc.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SSubjectsVO1.hints.SubjectDesc.label}"
+                                       id="c16" width="300" noWrap="false">
+                                <af:inputText value="#{row.bindings.SubjectDesc.inputValue}"
+                                              label="#{bindings.SSubjectsVO1.hints.SubjectDesc.label}"
+                                              required="#{bindings.SSubjectsVO1.hints.SubjectDesc.mandatory}"
+                                              columns="#{bindings.SSubjectsVO1.hints.SubjectDesc.displayWidth}"
+                                              maximumLength="#{bindings.SSubjectsVO1.hints.SubjectDesc.precision}"
+                                              shortDesc="#{bindings.SSubjectsVO1.hints.SubjectDesc.tooltip}" id="it12">
+                                    <f:validator binding="#{row.bindings.SubjectDesc.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                                    <af:column sortProperty="#{bindings.SSubjectsVO1.hints.ActiveYn.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.SSubjectsVO1.hints.ActiveYn.label}" id="c17">
+                                        <af:selectBooleanCheckbox text="" id="sbc3"
+                                                                  value="#{row.bindings.ActiveYn.inputValue}">
+                                            <f:converter converterId="YNConverter"/>
+                                        </af:selectBooleanCheckbox>
+                                        <f:facet name="filter">
+                                            <af:selectBooleanCheckbox text="" id="sbc181"
+                                                                      value="#{bindings.SSubjectsVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ActiveYn.value}">
+                                                <f:converter converterId="YNConverter"/>
+                                            </af:selectBooleanCheckbox>
+                                        </f:facet>
+                                    </af:column>
+                                </af:table>
+                        </af:panelCollection>
+                       
+                       </af:panelGroupLayout>
+                    </af:showDetailItem>
+                <af:showDetailItem text="#{schoolsystemuiBundle1.COMMON}" id="sdi1" stretchChildren="first">
+                    <af:panelGroupLayout id="pgl11" layout="vertical">
+                        <af:panelCollection id="pc4" styleClass="AFStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar">
+                            <af:toolbar id="t11">
+                                <af:button text="Add" id="b8" disabled="#{!bindings.CreateInsert4.enabled}"
+                               actionListener="#{bindings.CreateInsert4.execute}" action="addedit"/>
+                            </af:toolbar>
+                        </f:facet>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.SCommonLookupVO1.collectionModel}" var="row"
+                                  rows="#{bindings.SCommonLookupVO1.rangeSize}"
+                                  emptyText="#{bindings.SCommonLookupVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.SCommonLookupVO1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.SCommonLookupVO1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.SCommonLookupVO1.rangeSize}"
+                                  filterModel="#{bindings.SCommonLookupVO1Query.queryDescriptor}"
+                                  queryListener="#{bindings.SCommonLookupVO1Query.processQuery}" filterVisible="true"
+                                  varStatus="vs" id="t10" partialTriggers="::b8">
+                            <af:column sortProperty="#{bindings.SCommonLookupVO1.hints.LovId.name}" filterable="true"
+                                       sortable="true" headerText="#{bindings.SCommonLookupVO1.hints.LovId.label}"
+                                       id="c20">
+                                <af:inputText value="#{row.bindings.LovId.inputValue}"
+                                              label="#{bindings.SCommonLookupVO1.hints.LovId.label}"
+                                              required="#{bindings.SCommonLookupVO1.hints.LovId.mandatory}"
+                                              columns="#{bindings.SCommonLookupVO1.hints.LovId.displayWidth}"
+                                              maximumLength="#{bindings.SCommonLookupVO1.hints.LovId.precision}"
+                                              shortDesc="#{bindings.SCommonLookupVO1.hints.LovId.tooltip}" id="it15">
+                                    <f:validator binding="#{row.bindings.LovId.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.SCommonLookupVO1.hints.LovId.format}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SCommonLookupVO1.hints.LovFieldName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.SCommonLookupVO1.hints.LovFieldName.label}" id="c21">
+                                <af:inputText value="#{row.bindings.LovFieldName.inputValue}"
+                                              label="#{bindings.SCommonLookupVO1.hints.LovFieldName.label}"
+                                              required="#{bindings.SCommonLookupVO1.hints.LovFieldName.mandatory}"
+                                              columns="#{bindings.SCommonLookupVO1.hints.LovFieldName.displayWidth}"
+                                              maximumLength="#{bindings.SCommonLookupVO1.hints.LovFieldName.precision}"
+                                              shortDesc="#{bindings.SCommonLookupVO1.hints.LovFieldName.tooltip}"
+                                              id="it16">
+                                    <f:validator binding="#{row.bindings.LovFieldName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SCommonLookupVO1.hints.LovFieldValue.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.SCommonLookupVO1.hints.LovFieldValue.label}" id="c22">
+                                <af:inputText value="#{row.bindings.LovFieldValue.inputValue}"
+                                              label="#{bindings.SCommonLookupVO1.hints.LovFieldValue.label}"
+                                              required="#{bindings.SCommonLookupVO1.hints.LovFieldValue.mandatory}"
+                                              columns="#{bindings.SCommonLookupVO1.hints.LovFieldValue.displayWidth}"
+                                              maximumLength="#{bindings.SCommonLookupVO1.hints.LovFieldValue.precision}"
+                                              shortDesc="#{bindings.SCommonLookupVO1.hints.LovFieldValue.tooltip}"
+                                              id="it17">
+                                    <f:validator binding="#{row.bindings.LovFieldValue.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SCommonLookupVO1.hints.LovShortName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.SCommonLookupVO1.hints.LovShortName.label}" id="c23">
+                                <af:inputText value="#{row.bindings.LovShortName.inputValue}"
+                                              label="#{bindings.SCommonLookupVO1.hints.LovShortName.label}"
+                                              required="#{bindings.SCommonLookupVO1.hints.LovShortName.mandatory}"
+                                              columns="#{bindings.SCommonLookupVO1.hints.LovShortName.displayWidth}"
+                                              maximumLength="#{bindings.SCommonLookupVO1.hints.LovShortName.precision}"
+                                              shortDesc="#{bindings.SCommonLookupVO1.hints.LovShortName.tooltip}"
+                                              id="it18">
+                                    <f:validator binding="#{row.bindings.LovShortName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.SCommonLookupVO1.hints.LovLongName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.SCommonLookupVO1.hints.LovLongName.label}" id="c24">
+                                <af:inputText value="#{row.bindings.LovLongName.inputValue}"
+                                              label="#{bindings.SCommonLookupVO1.hints.LovLongName.label}"
+                                              required="#{bindings.SCommonLookupVO1.hints.LovLongName.mandatory}"
+                                              columns="#{bindings.SCommonLookupVO1.hints.LovLongName.displayWidth}"
+                                              maximumLength="#{bindings.SCommonLookupVO1.hints.LovLongName.precision}"
+                                              shortDesc="#{bindings.SCommonLookupVO1.hints.LovLongName.tooltip}"
+                                              id="it19">
+                                    <f:validator binding="#{row.bindings.LovLongName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                                    <af:column sortProperty="#{bindings.SCommonLookupVO1.hints.LovActiveYn.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.SCommonLookupVO1.hints.LovActiveYn.label}"
+                                               id="c25">
+                                        <af:selectBooleanCheckbox text="" id="sbc4"
+                                                                  value="#{row.bindings.LovActiveYn.inputValue}">
+                                            <f:converter converterId="YNConverter"/>
+                                        </af:selectBooleanCheckbox>
+                                        <f:facet name="filter">
+                                            <af:selectBooleanCheckbox text="" id="sbc191"
+                                                                      value="#{bindings.SCommonLookupVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.LovActiveYn.value}">
+                                                <f:converter converterId="YNConverter"/>
+                                            </af:selectBooleanCheckbox>
+                                        </f:facet>
+                                    </af:column>
+                                </af:table>
+                        </af:panelCollection>
+                      
+                    </af:panelGroupLayout>
+                </af:showDetailItem>
+            </af:panelTabbed>
+            </af:panelGroupLayout>
+        </af:panelHeader>
+       
+                
+            </af:panelGroupLayout>
+   
+</ui:composition>

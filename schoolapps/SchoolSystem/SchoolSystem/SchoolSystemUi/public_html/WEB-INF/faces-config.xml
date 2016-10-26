@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="2.1" xmlns="http://java.sun.com/xml/ns/javaee">
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+  </application>
+  <converter>
+    <converter-id>YNConverter</converter-id>
+    <converter-class>com.lab.kot.school.ui.handler.utility.YNConverter</converter-class>
+  </converter>
+</faces-config>

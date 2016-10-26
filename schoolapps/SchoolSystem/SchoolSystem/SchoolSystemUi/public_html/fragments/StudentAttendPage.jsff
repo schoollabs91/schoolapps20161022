@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.StudentAttendPageBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="#{schoolsystemuiBundle.ATTENDANCE_SHEET}" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+         
+          <af:button text="Save" id="b11" actionListener="#{bindings.Commit.execute}" icon="/images/sCheck.png"/>
+          <af:button text="Back" id="b21" actionListener="#{bindings.Rollback.execute}" immediate="true" action="back"
+                     icon="/images/backsimple.png">
+              <af:resetActionListener/>
+            </af:button>        
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:panelGroupLayout layout="vertical" id="pgl3">
+          
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.SStudAttendSearchCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.SStudAttendSearchCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.SStudAttendSearchCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.SStudAttendSearchCriteriaQuery.processQueryOperation}"
+                      resultComponentId="::pc1" maxColumns="3" rows="2" saveQueryMode="hidden"
+                      modeChangeVisible="false"/>
+          
+        </af:panelGroupLayout>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t3">
+              <af:button  text="Create Attendance List"
+                          id="b1">
+                <af:showPopupBehavior popupId="::p1" triggerType="action"/>
+              </af:button>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.SStudAttendVO1.collectionModel}" var="row"
+                    rows="#{bindings.SStudAttendVO1.rangeSize}"
+                    emptyText="#{bindings.SStudAttendVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="1" selectedRowKeys="#{bindings.SStudAttendVO1.collectionModel.selectedRow}"
+                    rowSelection="multiple" fetchSize="#{bindings.SStudAttendVO1.rangeSize}" id="t2"
+                    partialTriggers="::b1">
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.SId.name}" sortable="true"
+                       headerText="#{bindings.SStudAttendVO1.hints.SId.label}" id="c1" rowHeader="true" frozen="true"
+                       width="50">
+              <af:inputText value="#{row.bindings.SId.inputValue}" label="#{bindings.SStudAttendVO1.hints.SId.label}"
+                            required="#{bindings.SStudAttendVO1.hints.SId.mandatory}"
+                            columns="#{bindings.SStudAttendVO1.hints.SId.displayWidth}"
+                            maximumLength="#{bindings.SStudAttendVO1.hints.SId.precision}"
+                            shortDesc="#{bindings.SStudAttendVO1.hints.SId.tooltip}" id="it1" readOnly="true">
+                <f:validator binding="#{row.bindings.SId.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D1.name}" sortable="true"
+                       headerText="#{bindings.SStudAttendVO1.hints.D1.label}" id="c2" width="25">
+              <af:selectBooleanCheckbox value="#{row.bindings.D1.inputValue}"  id="sbc1">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+             
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D2.name}"  sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D2.label}" id="c3">
+             <af:selectBooleanCheckbox value="#{row.bindings.D2.inputValue}"  id="sbc2">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D3.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D3.label}" id="c4">
+            <af:selectBooleanCheckbox value="#{row.bindings.D3.inputValue}"  id="sbc3">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D4.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D4.label}" id="c5">
+             <af:selectBooleanCheckbox value="#{row.bindings.D4.inputValue}"  id="sbc4">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D5.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D5.label}" id="c6">
+            <af:selectBooleanCheckbox value="#{row.bindings.D5.inputValue}"  id="sbc5">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D6.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D6.label}" id="c7">
+            <af:selectBooleanCheckbox value="#{row.bindings.D6.inputValue}"  id="sbc6">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D7.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D7.label}" id="c8">
+             <af:selectBooleanCheckbox value="#{row.bindings.D7.inputValue}"  id="sbc7">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D8.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D8.label}" id="c9">
+             <af:selectBooleanCheckbox value="#{row.bindings.D8.inputValue}"  id="sbc8">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D9.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D9.label}" id="c10">
+             <af:selectBooleanCheckbox value="#{row.bindings.D9.inputValue}"  id="sbc9">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D10.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D10.label}" id="c11">
+               <af:selectBooleanCheckbox value="#{row.bindings.D10.inputValue}"  id="sbc10">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D11.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D11.label}" id="c12">
+            <af:selectBooleanCheckbox value="#{row.bindings.D11.inputValue}"  id="sbc11">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D12.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D12.label}" id="c13">
+             <af:selectBooleanCheckbox value="#{row.bindings.D12.inputValue}"  id="sbc12">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D13.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D13.label}" id="c14">
+             <af:selectBooleanCheckbox value="#{row.bindings.D13.inputValue}"  id="sbc13">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D14.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D14.label}" id="c15" frozen="true">
+              <af:selectBooleanCheckbox value="#{row.bindings.D14.inputValue}"  id="sbc14">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D15.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D15.label}" id="c16">
+             <af:selectBooleanCheckbox value="#{row.bindings.D15.inputValue}"  id="sbc15">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D16.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D16.label}" id="c17">
+            <af:selectBooleanCheckbox value="#{row.bindings.D16.inputValue}"  id="sbc16">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D17.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D17.label}" id="c18">
+               <af:selectBooleanCheckbox value="#{row.bindings.D17.inputValue}"  id="sbc17">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D18.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D18.label}" id="c19">
+             <af:selectBooleanCheckbox value="#{row.bindings.D18.inputValue}"  id="sbc18">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D19.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D19.label}" id="c20">
+            <af:selectBooleanCheckbox value="#{row.bindings.D19.inputValue}"  id="sbc19">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D20.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D20.label}" id="c21">
+             <af:selectBooleanCheckbox value="#{row.bindings.D20.inputValue}"  id="sbc20">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D21.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D21.label}" id="c22">
+              <af:selectBooleanCheckbox value="#{row.bindings.D21.inputValue}"  id="sbc21">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D22.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D22.label}" id="c23">
+            <af:selectBooleanCheckbox value="#{row.bindings.D22.inputValue}"  id="sbc22">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D23.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D23.label}" id="c24">
+             <af:selectBooleanCheckbox value="#{row.bindings.D23.inputValue}"  id="sbc23">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D24.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D24.label}" id="c25">
+              <af:selectBooleanCheckbox value="#{row.bindings.D24.inputValue}"  id="sbc24">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D25.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D25.label}" id="c26">
+             <af:selectBooleanCheckbox value="#{row.bindings.D25.inputValue}"  id="sbc25">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D26.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D26.label}" id="c27">
+              <af:selectBooleanCheckbox value="#{row.bindings.D26.inputValue}"  id="sbc26">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D27.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D27.label}" id="c28">
+             <af:selectBooleanCheckbox value="#{row.bindings.D27.inputValue}"  id="sbc27">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D28.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D28.label}" id="c29">
+             <af:selectBooleanCheckbox value="#{row.bindings.D28.inputValue}"  id="sbc28">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D29.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D29.label}" id="c30">
+             <af:selectBooleanCheckbox value="#{row.bindings.D29.inputValue}"  id="sbc29">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D30.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D30.label}" id="c31">
+              <af:selectBooleanCheckbox value="#{row.bindings.D30.inputValue}"  id="sbc30">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.D31.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.D31.label}" id="c32">
+             <af:selectBooleanCheckbox value="#{row.bindings.D31.inputValue}"  id="sbc31"
+                                      >
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+            </af:column>
+            <af:column sortProperty="#{bindings.SStudAttendVO1.hints.Total.name}" sortable="true" width="25"
+                       headerText="#{bindings.SStudAttendVO1.hints.Total.label}" id="c33">
+              <af:inputText  id="it2" value="#{row.bindings.Total.inputValue}" readOnly="true"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+        <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+          <af:panelWindow id="pw1">
+            <af:panelHeader text="Create Attendance List" id="ph3">
+              <f:facet name="context"/>
+              <f:facet name="menuBar"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="legend"/>
+              <f:facet name="info"/>
+              <af:panelGroupLayout id="pgl4" layout="vertical">
+                <af:panelFormLayout id="pfl1">
+                  <af:selectOneChoice value="#{bindings.SessionCode.inputValue}" label="#{bindings.SessionCode.label}"
+                                      required="#{bindings.SessionCode.hints.mandatory}"
+                                      shortDesc="#{bindings.SessionCode.hints.tooltip}" id="soc1">
+                    <f:selectItems value="#{bindings.SessionCode.items}" id="si1"/>
+                    <f:validator binding="#{bindings.SessionCode.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.ClassClode.inputValue}" label="#{bindings.ClassClode.label}"
+                                      required="#{bindings.ClassClode.hints.mandatory}"
+                                      shortDesc="#{bindings.ClassClode.hints.tooltip}" id="soc2">
+                    <f:selectItems value="#{bindings.ClassClode.items}" id="si2"/>
+                    <f:validator binding="#{bindings.ClassClode.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.SectionCode.inputValue}" label="#{bindings.SectionCode.label}"
+                                      required="#{bindings.SectionCode.hints.mandatory}"
+                                      shortDesc="#{bindings.SectionCode.hints.tooltip}" id="soc3">
+                    <f:selectItems value="#{bindings.SectionCode.items}" id="si3"/>
+                    <f:validator binding="#{bindings.SectionCode.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.SMonth.inputValue}" label="#{bindings.SMonth.label}"
+                                      required="#{bindings.SMonth.hints.mandatory}"
+                                      shortDesc="#{bindings.SMonth.hints.tooltip}" id="soc4">
+                    <f:selectItems value="#{bindings.SMonth.items}" id="si4"/>
+                    <f:validator binding="#{bindings.SMonth.validator}"/>
+                  </af:selectOneChoice>
+                  <af:button text="Create the List" id="b2"
+                             actionListener="#{backingBeanScope.StudentAttendanceSearchBean.createAttendanceList}"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </af:panelHeader>
+          </af:panelWindow>
+        </af:popup>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

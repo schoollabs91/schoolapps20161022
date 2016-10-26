@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SStudentSRunningSessionVL"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  EntityAssociation="com.lab.kot.school.model.eo.aso.SStudentSRunningSessionASO">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.lab.kot.school.model.vo.vl.SStudentSRunningSessionVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SStudentVO"
+    Cardinality="1"
+    Source="true"
+    Owner="com.lab.kot.school.model.vo.SStudentVO">
+    <DesignTime>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="SStudentVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lab.kot.school.model.vo.SStudentVO.SId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SRunningSessionVO"
+    Cardinality="-1"
+    Owner="com.lab.kot.school.model.vo.SRunningSessionVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SRunningSessionVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lab.kot.school.model.vo.SRunningSessionVO.SId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lab.kot.school.model.SchoolSystemModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

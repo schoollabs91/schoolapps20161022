@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SExamTimeTable"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="S_EXAM_TIME_TABLE"
+  AliasName="SExamTimeTable"
+  BindingStyle="JDBC">
+  <Attribute
+    Name="SDate"
+    ColumnName="S_DATE"
+    SQLType="DATE"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="S_EXAM_TIME_TABLE"/>
+  <Attribute
+    Name="SDay"
+    Precision="20"
+    ColumnName="S_DAY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_EXAM_TIME_TABLE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SubjectCode"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="SUBJECT_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_EXAM_TIME_TABLE"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PaperCode"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="PAPER_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_EXAM_TIME_TABLE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ClassCode"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="CLASS_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_EXAM_TIME_TABLE"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ExamType"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="EXAM_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_EXAM_TIME_TABLE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TimeSlotFrom"
+    Precision="20"
+    ColumnName="TIME_SLOT_FROM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_EXAM_TIME_TABLE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TimeSlotTo"
+    Precision="20"
+    ColumnName="TIME_SLOT_TO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_EXAM_TIME_TABLE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SessionCode"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="SESSION_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_EXAM_TIME_TABLE"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="SExamTimeTablePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_EXAM_TIME_TABLE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lab.kot.school.model.eo.SExamTimeTable.SubjectCode"/>
+      <Item Value="com.lab.kot.school.model.eo.SExamTimeTable.ClassCode"/>
+      <Item Value="com.lab.kot.school.model.eo.SExamTimeTable.SessionCode"/>
+    </AttrArray>
+  </Key>
+</Entity>

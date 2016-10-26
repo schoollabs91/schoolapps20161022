@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.TeacherAddEditPageBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="#{schoolsystemuiBundle.TEACHER_DETAILS}" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:button actionListener="#{bindings.Commit.execute}" text="Save"  id="b1" icon="/images/sCheck.png"/>
+          <af:button actionListener="#{bindings.Rollback.execute}" text="Back"
+                    immediate="true" id="b2" action="back" icon="/images/backsimple.png"/> 
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:panelBox text="#{schoolsystemuiBundle.PERSONAL_DETAILS}" id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelFormLayout id="pfl1" maxColumns="2" rows="5" fieldWidth="30" labelWidth="30" labelAlignment="start">
+            <af:inputText value="#{bindings.TId.inputValue}" label="#{bindings.TId.hints.label}"
+                          required="#{bindings.TId.hints.mandatory}" columns="#{bindings.TId.hints.displayWidth}"
+                          maximumLength="#{bindings.TId.hints.precision}" shortDesc="#{bindings.TId.hints.tooltip}"
+                          id="it1">
+              <f:validator binding="#{bindings.TId.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TFName.inputValue}" label="#{bindings.TFName.hints.label}"
+                          required="#{bindings.TFName.hints.mandatory}" columns="#{bindings.TFName.hints.displayWidth}"
+                          maximumLength="#{bindings.TFName.hints.precision}"
+                          shortDesc="#{bindings.TFName.hints.tooltip}" id="it2">
+              <f:validator binding="#{bindings.TFName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TLName.inputValue}" label="#{bindings.TLName.hints.label}"
+                          required="#{bindings.TLName.hints.mandatory}" columns="#{bindings.TLName.hints.displayWidth}"
+                          maximumLength="#{bindings.TLName.hints.precision}"
+                          shortDesc="#{bindings.TLName.hints.tooltip}" id="it3">
+              <f:validator binding="#{bindings.TLName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TMName.inputValue}" label="#{bindings.TMName.hints.label}"
+                          required="#{bindings.TMName.hints.mandatory}" columns="#{bindings.TMName.hints.displayWidth}"
+                          maximumLength="#{bindings.TMName.hints.precision}"
+                          shortDesc="#{bindings.TMName.hints.tooltip}" id="it4">
+              <f:validator binding="#{bindings.TMName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TGender.inputValue}" label="#{bindings.TGender.hints.label}"
+                          required="#{bindings.TGender.hints.mandatory}"
+                          columns="#{bindings.TGender.hints.displayWidth}"
+                          maximumLength="#{bindings.TGender.hints.precision}"
+                          shortDesc="#{bindings.TGender.hints.tooltip}" id="it5">
+              <f:validator binding="#{bindings.TGender.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TNationality.inputValue}" label="#{bindings.TNationality.hints.label}"
+                          required="#{bindings.TNationality.hints.mandatory}"
+                          columns="#{bindings.TNationality.hints.displayWidth}"
+                          maximumLength="#{bindings.TNationality.hints.precision}"
+                          shortDesc="#{bindings.TNationality.hints.tooltip}" id="it6">
+              <f:validator binding="#{bindings.TNationality.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.TDob.inputValue}" label="#{bindings.TDob.hints.label}"
+                          required="#{bindings.TDob.hints.mandatory}" columns="#{bindings.TDob.hints.displayWidth}"
+                          shortDesc="#{bindings.TDob.hints.tooltip}" id="id1">
+              <f:validator binding="#{bindings.TDob.validator}"/>
+              <af:convertDateTime pattern="#{bindings.TDob.format}"/>
+            </af:inputDate>
+            <af:inputText value="#{bindings.TEQual.inputValue}" label="#{bindings.TEQual.hints.label}"
+                          required="#{bindings.TEQual.hints.mandatory}" columns="#{bindings.TEQual.hints.displayWidth}"
+                          maximumLength="#{bindings.TEQual.hints.precision}"
+                          shortDesc="#{bindings.TEQual.hints.tooltip}" id="it7">
+              <f:validator binding="#{bindings.TEQual.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TPhoto.inputValue}" label="#{bindings.TPhoto.hints.label}"
+                          required="#{bindings.TPhoto.hints.mandatory}" columns="#{bindings.TPhoto.hints.displayWidth}"
+                          maximumLength="#{bindings.TPhoto.hints.precision}"
+                          shortDesc="#{bindings.TPhoto.hints.tooltip}" id="it8">
+              <f:validator binding="#{bindings.TPhoto.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TExp.inputValue}" label="#{bindings.TExp.hints.label}"
+                          required="#{bindings.TExp.hints.mandatory}" columns="#{bindings.TExp.hints.displayWidth}"
+                          maximumLength="#{bindings.TExp.hints.precision}" shortDesc="#{bindings.TExp.hints.tooltip}"
+                          id="it9">
+              <f:validator binding="#{bindings.TExp.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TMaritalStatus.inputValue}" label="#{bindings.TMaritalStatus.hints.label}"
+                          required="#{bindings.TMaritalStatus.hints.mandatory}"
+                          columns="#{bindings.TMaritalStatus.hints.displayWidth}"
+                          maximumLength="#{bindings.TMaritalStatus.hints.precision}"
+                          shortDesc="#{bindings.TMaritalStatus.hints.tooltip}" id="it10">
+              <f:validator binding="#{bindings.TMaritalStatus.validator}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+        </af:panelBox>
+        <af:panelBox text="#{schoolsystemuiBundle.ADDRESS_DETAILS}" id="pb2">
+          <f:facet name="toolbar"/>
+          <af:panelFormLayout id="pfl2" maxColumns="2" rows="5" fieldWidth="30" labelWidth="30" labelAlignment="start">
+            <af:inputText value="#{bindings.TAddressLine1.inputValue}" label="#{bindings.TAddressLine1.hints.label}"
+                          required="#{bindings.TAddressLine1.hints.mandatory}"
+                          columns="#{bindings.TAddressLine1.hints.displayWidth}"
+                          maximumLength="#{bindings.TAddressLine1.hints.precision}"
+                          shortDesc="#{bindings.TAddressLine1.hints.tooltip}" id="it11">
+              <f:validator binding="#{bindings.TAddressLine1.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TAddressLine2.inputValue}" label="#{bindings.TAddressLine2.hints.label}"
+                          required="#{bindings.TAddressLine2.hints.mandatory}"
+                          columns="#{bindings.TAddressLine2.hints.displayWidth}"
+                          maximumLength="#{bindings.TAddressLine2.hints.precision}"
+                          shortDesc="#{bindings.TAddressLine2.hints.tooltip}" id="it12">
+              <f:validator binding="#{bindings.TAddressLine2.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TAddressLine3.inputValue}" label="#{bindings.TAddressLine3.hints.label}"
+                          required="#{bindings.TAddressLine3.hints.mandatory}"
+                          columns="#{bindings.TAddressLine3.hints.displayWidth}"
+                          maximumLength="#{bindings.TAddressLine3.hints.precision}"
+                          shortDesc="#{bindings.TAddressLine3.hints.tooltip}" id="it13">
+              <f:validator binding="#{bindings.TAddressLine3.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TCity.inputValue}" label="#{bindings.TCity.hints.label}"
+                          required="#{bindings.TCity.hints.mandatory}" columns="#{bindings.TCity.hints.displayWidth}"
+                          maximumLength="#{bindings.TCity.hints.precision}" shortDesc="#{bindings.TCity.hints.tooltip}"
+                          id="it14">
+              <f:validator binding="#{bindings.TCity.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TState.inputValue}" label="#{bindings.TState.hints.label}"
+                          required="#{bindings.TState.hints.mandatory}" columns="#{bindings.TState.hints.displayWidth}"
+                          maximumLength="#{bindings.TState.hints.precision}"
+                          shortDesc="#{bindings.TState.hints.tooltip}" id="it15">
+              <f:validator binding="#{bindings.TState.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TPin.inputValue}" label="#{bindings.TPin.hints.label}"
+                          required="#{bindings.TPin.hints.mandatory}" columns="#{bindings.TPin.hints.displayWidth}"
+                          maximumLength="#{bindings.TPin.hints.precision}" shortDesc="#{bindings.TPin.hints.tooltip}"
+                          id="it16">
+              <f:validator binding="#{bindings.TPin.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TCountry.inputValue}" label="#{bindings.TCountry.hints.label}"
+                          required="#{bindings.TCountry.hints.mandatory}"
+                          columns="#{bindings.TCountry.hints.displayWidth}"
+                          maximumLength="#{bindings.TCountry.hints.precision}"
+                          shortDesc="#{bindings.TCountry.hints.tooltip}" id="it17">
+              <f:validator binding="#{bindings.TCountry.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.TPhoneNo.inputValue}" label="#{bindings.TPhoneNo.hints.label}"
+                          required="#{bindings.TPhoneNo.hints.mandatory}"
+                          columns="#{bindings.TPhoneNo.hints.displayWidth}"
+                          maximumLength="#{bindings.TPhoneNo.hints.precision}"
+                          shortDesc="#{bindings.TPhoneNo.hints.tooltip}" id="it18">
+              <f:validator binding="#{bindings.TPhoneNo.validator}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+        </af:panelBox>
+        <af:separator id="s1"/>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

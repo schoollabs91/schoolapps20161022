@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="TimeTableSearchPagePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="STimeTableVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="STimeTableVO1Iterator"/>
+    <searchRegion Criteria="STimeTableSearchCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="STimeTableVO1Iterator" id="STimeTableSearchCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <action IterBinding="STimeTableVO1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="STimeTableVO1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="STimeTableVO1Iterator" id="STimeTableVO1">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.STimeTableVO" Name="STimeTableVO10">
+        <AttrNames>
+          <Item Value="Monday"/>
+          <Item Value="Tuesday"/>
+          <Item Value="Wednesday"/>
+          <Item Value="Thursday"/>
+          <Item Value="Friday"/>
+          <Item Value="Saturday"/>
+          <Item Value="Sunday"/>
+          <Item Value="TId"/>
+          <Item Value="ClassCode"/>
+          <Item Value="SectionCode"/>
+          <Item Value="SessionCode"/>
+          <Item Value="SubjectCode"/>
+          <Item Value="TimeSlot"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

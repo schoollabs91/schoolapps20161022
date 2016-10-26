@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.lab.kot.school.model.SchoolSystemAM">
+      <AppModuleConfig name="SchoolSystemAMLocal" DeployPlatform="LOCAL" jbo.project="com.lab.kot.school.model.SchoolSystemModel" ApplicationName="com.lab.kot.school.model.SchoolSystemAM">
+         <Database jbo.SQLBuilder="SQL92" jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="com.lab.kot.school.model.SchoolSystemAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/educationDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="SchoolSystemAMShared" DeployPlatform="LOCAL" jbo.project="com.lab.kot.school.model.SchoolSystemModel" ApplicationName="com.lab.kot.school.model.SchoolSystemAM">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.SQLBuilder="SQL92" jbo.TypeMapEntries="Java"/>
+         <Security AppModuleJndiName="com.lab.kot.school.model.SchoolSystemAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/educationDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ListValuesVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.lab.kot.school.model.vo.ListValuesVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="SClassVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SClassVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SClassActiveCriteria"
+      FullName="com.lab.kot.school.model.vo.SClassVO.SClassActiveCriteria"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SSectionVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SSectionVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SSectionActiveCriteria"
+      FullName="com.lab.kot.school.model.vo.SSectionVO.SSectionActiveCriteria"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SSessionVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SSessionVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SSessionActiveCriteria"
+      FullName="com.lab.kot.school.model.vo.SSessionVO.SSessionActiveCriteria"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SCommonLookupVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SCommonLookupVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_SessionCode"
+    ListVOName="SSessionVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SessionCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SessionCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SessionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ClassClode"
+    ListVOName="SClassVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ClassClode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ClassCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ClassName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SectionCode"
+    ListVOName="SSectionVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SectionCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SectionCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SectionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SMonth"
+    ListVOName="SCommonLookupVA"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SMonth"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LovFieldValue"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LovShortName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT '' SESSION_CODE   
+, '' CLASS_CLODE   
+, '' SECTION_CODE   
+, '' S_MONTH  
+FROM DUAL]]></SQLQuery>
+  <ViewAttribute
+    Name="SessionCode"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="SESSION_CODE"
+    Expression="SESSION_CODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_SessionCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.lab.kot.school.model.vo.ListValuesVO.SessionCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ClassClode"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="CLASS_CLODE"
+    Expression="CLASS_CLODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_ClassClode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.lab.kot.school.model.vo.ListValuesVO.ClassClode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SectionCode"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="SECTION_CODE"
+    Expression="SECTION_CODE"
+    SQLType="VARCHAR"
+    LOVName="LOV_SectionCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.lab.kot.school.model.vo.ListValuesVO.SectionCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SMonth"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="S_MONTH"
+    Expression="S_MONTH"
+    SQLType="VARCHAR"
+    LOVName="LOV_SMonth">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+        <LABEL
+          ResId="com.lab.kot.school.model.vo.ListValuesVO.SMonth_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lab.kot.school.model.SchoolSystemModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

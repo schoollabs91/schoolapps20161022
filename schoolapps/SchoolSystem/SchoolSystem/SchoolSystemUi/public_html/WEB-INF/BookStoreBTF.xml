@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="BookStoreBTF">
+    <default-activity>BookStoreSearchPage</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <managed-bean id="__9">
+      <managed-bean-name>BookStoreBean</managed-bean-name>
+      <managed-bean-class>com.lab.kot.school.ui.bean.BookStoreBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__10">
+      <managed-bean-name>BookStoreSearchBean</managed-bean-name>
+      <managed-bean-class>com.lab.kot.school.ui.bean.BookStoreSearchBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__11">
+      <managed-bean-name>BookAllocationAddBean</managed-bean-name>
+      <managed-bean-class>com.lab.kot.school.ui.bean.BookAllocationAddBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="BookStoreSearchPage">
+      <page>/fragments/BookStoreSearchPage.jsff</page>
+    </view>
+    <view id="BookStoreAddPage">
+      <page>/fragments/BookStoreAddPage.jsff</page>
+    </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome>
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <view id="BookAllocationAddPage">
+      <page>/fragments/BookAllocationAddPage.jsff</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>BookStoreSearchPage</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>addedit</from-outcome>
+        <to-activity-id>BookStoreAddPage</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>allocate</from-outcome>
+        <to-activity-id>BookAllocationAddPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>BookStoreAddPage</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>BookStoreSearchPage</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>return</from-outcome>
+        <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>BookAllocationAddPage</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>backfromallocate</from-outcome>
+        <to-activity-id>BookStoreSearchPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

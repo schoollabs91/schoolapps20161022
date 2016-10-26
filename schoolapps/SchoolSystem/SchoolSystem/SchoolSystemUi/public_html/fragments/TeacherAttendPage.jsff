@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.TeacherAttendPageBundle']}"/>
+ 
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:panelHeader text="#{schoolsystemuiBundle.TEACHER_S_ATTENDANCE}" id="ph2">
+          <f:facet name="context"/>
+          <f:facet name="menuBar"/>
+          <f:facet name="toolbar">
+           <af:toolbar id="t11">
+          <af:button text="Save" id="b23" actionListener="#{bindings.Commit.execute}" icon="/images/sCheck.png"/>
+          <af:button text="Back" id="b22" actionListener="#{bindings.Rollback.execute}" immediate="true" action="back"
+                     icon="/images/backsimple.png">
+              <af:resetActionListener/>
+            </af:button>
+                
+        </af:toolbar>
+        </f:facet>
+          <f:facet name="legend"/>
+          <f:facet name="info"/>
+          <af:panelGroupLayout layout="vertical" id="pgl4">            
+              <af:query id="qryId1" headerText="Search" disclosed="true"
+                        value="#{bindings.STeachAttendSearchCriteriaQuery.queryDescriptor}"
+                        model="#{bindings.STeachAttendSearchCriteriaQuery.queryModel}"
+                        queryListener="#{bindings.STeachAttendSearchCriteriaQuery.processQuery}"
+                        queryOperationListener="#{bindings.STeachAttendSearchCriteriaQuery.processQueryOperation}"
+                        resultComponentId="::pc1" rows="1" maxColumns="3" saveQueryMode="hidden"
+                        modeChangeVisible="false"/>            
+          </af:panelGroupLayout>
+        </af:panelHeader>
+     
+          <af:panelGroupLayout id="pgl3" layout="vertical">
+            <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+              <f:facet name="menus"/>
+              <f:facet name="toolbar">
+            <af:toolbar id="t3">
+              <af:button  text="Create Attendance List"
+                          id="b1" icon="/images/s_Add.png">
+                <af:showPopupBehavior popupId="::p1" triggerType="action"/>
+              </af:button>
+            </af:toolbar>
+          </f:facet>
+              <f:facet name="statusbar"/>
+              <af:table value="#{bindings.STeachAttendVO1.collectionModel}" var="row"
+                        rows="#{bindings.STeachAttendVO1.rangeSize}"
+                        emptyText="#{bindings.STeachAttendVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        rowBandingInterval="0" selectedRowKeys="#{bindings.STeachAttendVO1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.STeachAttendVO1.collectionModel.makeCurrent}"
+                        rowSelection="single" fetchSize="#{bindings.STeachAttendVO1.rangeSize}" id="t1">
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.TId.label}" id="c1" width="50" frozen="true">
+                  <af:inputText value="#{row.bindings.TId.inputValue}"
+                                label="#{bindings.STeachAttendVO1.hints.TId.label}"
+                                required="#{bindings.STeachAttendVO1.hints.TId.mandatory}"
+                                columns="#{bindings.STeachAttendVO1.hints.TId.displayWidth}"
+                                maximumLength="#{bindings.STeachAttendVO1.hints.TId.precision}"
+                                shortDesc="#{bindings.STeachAttendVO1.hints.TId.tooltip}" id="it1" readOnly="true">
+                    <f:validator binding="#{row.bindings.TId.validator}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D1.label}" width="25" id="c2">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D1.inputValue}"  id="sbc1">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D2.label}" width="25"  id="c3">
+                   <af:selectBooleanCheckbox value="#{row.bindings.D2.inputValue}"  id="sbc2">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D3.label}" width="25"  id="c4">
+              <af:selectBooleanCheckbox value="#{row.bindings.D3.inputValue}"  id="sbc3">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D4.label}" width="25"  id="c5">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D4.inputValue}"  id="sbc4">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D5.label}" width="25"  id="c6">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D5.inputValue}"  id="sbc5">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D6.label}" width="25"  id="c7">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D6.inputValue}"  id="sbc6">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D7.label}" width="25"  id="c8">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D7.inputValue}"  id="sbc7">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D8.label}" width="25"  id="c9">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D8.inputValue}"  id="sbc8">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D9.label}" width="25"  id="c10">
+                <af:selectBooleanCheckbox value="#{row.bindings.D9.inputValue}"  id="sbc9">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D10.label}" width="25"  id="c11">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D10.inputValue}"  id="sbc10">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D11.label}" width="25"  id="c12">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D11.inputValue}"  id="sbc11">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D12.label}" width="25"  id="c13">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D12.inputValue}"  id="sbc12">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D13.label}" width="25"  id="c14">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D13.inputValue}"  id="sbc13">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D14.label}" width="25"  id="c15" frozen="true">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D14.inputValue}"  id="sb41">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D15.label}" width="25"  id="c16">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D15.inputValue}"  id="sbc15">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D16.label}" width="25"  id="c17">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D16.inputValue}"  id="sbc16">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D17.label}"  width="25" id="c18">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D17.inputValue}"  id="sbc17">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D18.label}" width="25"  id="c19">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D18.inputValue}"  id="sbc18">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D19.label}" width="25"  id="c20">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D19.inputValue}"  id="sbc19">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D20.label}" width="25"  id="c21">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D20.inputValue}"  id="sbc20">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D21.label}" width="25"  id="c22">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D21.inputValue}"  id="sbc21">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D22.label}" width="25"  id="c23">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D22.inputValue}"  id="sbc22">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D23.label}" width="25"  id="c24">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D23.inputValue}"  id="sbc23">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D24.label}" width="25"  id="c25">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D24.inputValue}"  id="sbc24">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D25.label}" width="25"  id="c26">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D25.inputValue}"  id="sbc25">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D26.label}" width="25"  id="c27">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D26.inputValue}"  id="sbc26">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D27.label}" width="25"  id="c28">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D27.inputValue}"  id="sbc27">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D28.label}" width="25"  id="c29">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D28.inputValue}"  id="sbc28">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D29.label}" width="25"  id="c30">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D29.inputValue}"  id="sbc29">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D30.label}" width="25"  id="c31">
+                 <af:selectBooleanCheckbox value="#{row.bindings.D30.inputValue}"  id="sbc30">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column headerText="#{bindings.STeachAttendVO1.hints.D31.label}" width="25"  id="c32">
+                  <af:selectBooleanCheckbox value="#{row.bindings.D31.inputValue}"  id="sbc31">
+                <f:converter converterId="YNConverter"/>
+              </af:selectBooleanCheckbox>
+                </af:column>
+                <af:column sortProperty="#{bindings.STeachAttendVO1.hints.Total.name}" sortable="true" width="25"
+                       headerText="#{bindings.STeachAttendVO1.hints.Total.label}" id="c33">
+              <af:inputText  id="it2" value="#{row.bindings.Total.inputValue}" readOnly="true"/>
+            </af:column>
+              </af:table>
+            </af:panelCollection>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+          <af:panelWindow id="pw1">
+            <af:panelHeader text="Create Attendance List" id="ph4">
+              <f:facet name="context"/>
+              <f:facet name="menuBar"/>
+              <f:facet name="toolbar"/>
+              <f:facet name="legend"/>
+              <f:facet name="info"/>
+              <af:panelGroupLayout id="pgl41" layout="vertical">
+                    <af:panelFormLayout id="pfl2">
+                      <af:selectOneChoice value="#{bindings.SessionCode.inputValue}"
+                                          label="#{bindings.SessionCode.label}"
+                                          required="#{bindings.SessionCode.hints.mandatory}"
+                                          shortDesc="#{bindings.SessionCode.hints.tooltip}" id="soc5">
+                        <f:selectItems value="#{bindings.SessionCode.items}" id="si5"/>
+                        <f:validator binding="#{bindings.SessionCode.validator}"/>
+                      </af:selectOneChoice>
+                      <af:selectOneChoice value="#{bindings.SMonth.inputValue}" label="#{bindings.SMonth.label}"
+                                          required="#{bindings.SMonth.hints.mandatory}"
+                                          shortDesc="#{bindings.SMonth.hints.tooltip}" id="soc6">
+                        <f:selectItems value="#{bindings.SMonth.items}" id="si6"/>
+                        <f:validator binding="#{bindings.SMonth.validator}"/>
+                      </af:selectOneChoice>
+                     
+                      <af:button text="Create the List" id="b2"
+                             actionListener="#{backingBeanScope.TeachAttendanceSearchBean.createAttendanceList}"/>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </af:panelHeader>
+          </af:panelWindow>
+        </af:popup>
+          </af:panelGroupLayout>
+       
+      </af:panelGroupLayout>
+ 
+</ui:composition>

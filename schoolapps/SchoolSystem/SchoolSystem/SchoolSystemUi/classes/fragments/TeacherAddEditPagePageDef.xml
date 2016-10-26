@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="TeacherAddEditPagePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="STeacherVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="STeacherVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TId">
+      <AttrNames>
+        <Item Value="TId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TFName">
+      <AttrNames>
+        <Item Value="TFName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TLName">
+      <AttrNames>
+        <Item Value="TLName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TMName">
+      <AttrNames>
+        <Item Value="TMName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TGender">
+      <AttrNames>
+        <Item Value="TGender"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TNationality">
+      <AttrNames>
+        <Item Value="TNationality"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TDob">
+      <AttrNames>
+        <Item Value="TDob"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TEQual">
+      <AttrNames>
+        <Item Value="TEQual"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TPhoto">
+      <AttrNames>
+        <Item Value="TPhoto"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TExp">
+      <AttrNames>
+        <Item Value="TExp"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TMaritalStatus">
+      <AttrNames>
+        <Item Value="TMaritalStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TAddressLine1">
+      <AttrNames>
+        <Item Value="TAddressLine1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TAddressLine2">
+      <AttrNames>
+        <Item Value="TAddressLine2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TAddressLine3">
+      <AttrNames>
+        <Item Value="TAddressLine3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TCity">
+      <AttrNames>
+        <Item Value="TCity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TState">
+      <AttrNames>
+        <Item Value="TState"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TPin">
+      <AttrNames>
+        <Item Value="TPin"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TCountry">
+      <AttrNames>
+        <Item Value="TCountry"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="STeacherVO1Iterator" id="TPhoneNo">
+      <AttrNames>
+        <Item Value="TPhoneNo"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="SchoolSystemAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="SchoolSystemAMDataControl"/>
+  </bindings>
+</pageDefinition>

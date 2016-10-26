@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.BookStoreAddPageBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="#{schoolsystemuiBundle.ADD_MODIFY_BOOK_DETAILS}" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:button actionListener="#{bindings.Commit.execute}" 
+                     id="b1" icon="/images/sCheck.png" text="Save"/>
+          <af:button actionListener="#{bindings.Rollback.execute}"
+                      immediate="true" id="b2" action="back" icon="/images/backsimple.png" text="Back">
+            <af:resetActionListener/>
+          </af:button>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:panelFormLayout id="pfl1">
+          <af:inputText value="#{bindings.BookId.inputValue}" label="#{bindings.BookId.hints.label}"
+                        required="#{bindings.BookId.hints.mandatory}" columns="#{bindings.BookId.hints.displayWidth}"
+                        maximumLength="#{bindings.BookId.hints.precision}" shortDesc="#{bindings.BookId.hints.tooltip}"
+                        id="it1">
+            <f:validator binding="#{bindings.BookId.validator}"/>
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.BookId.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Isbn.inputValue}" label="#{bindings.Isbn.hints.label}"
+                        required="#{bindings.Isbn.hints.mandatory}" columns="#{bindings.Isbn.hints.displayWidth}"
+                        maximumLength="#{bindings.Isbn.hints.precision}" shortDesc="#{bindings.Isbn.hints.tooltip}"
+                        id="it2">
+            <f:validator binding="#{bindings.Isbn.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BookTitle.inputValue}" label="#{bindings.BookTitle.hints.label}"
+                        required="#{bindings.BookTitle.hints.mandatory}"
+                        columns="50"
+                        maximumLength="#{bindings.BookTitle.hints.precision}"
+                        shortDesc="#{bindings.BookTitle.hints.tooltip}" id="it3" rows="2">
+            <f:validator binding="#{bindings.BookTitle.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BookAuthor.inputValue}" label="#{bindings.BookAuthor.hints.label}"
+                        required="#{bindings.BookAuthor.hints.mandatory}"
+                        columns="50"
+                        maximumLength="#{bindings.BookAuthor.hints.precision}"
+                        shortDesc="#{bindings.BookAuthor.hints.tooltip}" id="it4" rows="2">
+            <f:validator binding="#{bindings.BookAuthor.validator}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.BookPublishDate.inputValue}" label="#{bindings.BookPublishDate.hints.label}"
+                        required="#{bindings.BookPublishDate.hints.mandatory}"
+                        columns="#{bindings.BookPublishDate.hints.displayWidth}"
+                        shortDesc="#{bindings.BookPublishDate.hints.tooltip}" id="id1">
+            <f:validator binding="#{bindings.BookPublishDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.BookPublishDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.LocDirection.inputValue}" label="#{bindings.LocDirection.hints.label}"
+                        required="#{bindings.LocDirection.hints.mandatory}"
+                        columns="#{bindings.LocDirection.hints.displayWidth}"
+                        maximumLength="#{bindings.LocDirection.hints.precision}"
+                        shortDesc="#{bindings.LocDirection.hints.tooltip}" id="it5">
+            <f:validator binding="#{bindings.LocDirection.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.LocShelve.inputValue}" label="#{bindings.LocShelve.hints.label}"
+                        required="#{bindings.LocShelve.hints.mandatory}"
+                        columns="#{bindings.LocShelve.hints.displayWidth}"
+                        maximumLength="#{bindings.LocShelve.hints.precision}"
+                        shortDesc="#{bindings.LocShelve.hints.tooltip}" id="it6">
+            <f:validator binding="#{bindings.LocShelve.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BookTypeCode.inputValue}" label="#{bindings.BookTypeCode.hints.label}"
+                        required="#{bindings.BookTypeCode.hints.mandatory}"
+                        columns="#{bindings.BookTypeCode.hints.displayWidth}"
+                        maximumLength="#{bindings.BookTypeCode.hints.precision}"
+                        shortDesc="#{bindings.BookTypeCode.hints.tooltip}" id="it7">
+            <f:validator binding="#{bindings.BookTypeCode.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BookRemarks.inputValue}" label="#{bindings.BookRemarks.hints.label}"
+                        required="#{bindings.BookRemarks.hints.mandatory}"
+                        columns="60"
+                        maximumLength="#{bindings.BookRemarks.hints.precision}"
+                        shortDesc="#{bindings.BookRemarks.hints.tooltip}" id="it8" rows="5">
+            <f:validator binding="#{bindings.BookRemarks.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BookCover.inputValue}" label="#{bindings.BookCover.hints.label}"
+                        required="#{bindings.BookCover.hints.mandatory}"
+                        columns="#{bindings.BookCover.hints.displayWidth}"
+                        maximumLength="#{bindings.BookCover.hints.precision}"
+                        shortDesc="#{bindings.BookCover.hints.tooltip}" id="it9">
+            <f:validator binding="#{bindings.BookCover.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.ActiveYn.inputValue}" label="#{bindings.ActiveYn.hints.label}"
+                        required="#{bindings.ActiveYn.hints.mandatory}"
+                        columns="#{bindings.ActiveYn.hints.displayWidth}"
+                        maximumLength="#{bindings.ActiveYn.hints.precision}"
+                        shortDesc="#{bindings.ActiveYn.hints.tooltip}" id="it10">
+            <f:validator binding="#{bindings.ActiveYn.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

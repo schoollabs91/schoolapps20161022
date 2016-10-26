@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="TeacherSearchPagePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="STeacherVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="STeacherVO1Iterator"/>
+    <searchRegion Criteria="TeacherSearchCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="STeacherVO1Iterator" id="TeacherSearchCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="STeacherVO1Iterator" id="STeacherVO1">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.STeacherVO" Name="STeacherVO10">
+        <AttrNames>
+          <Item Value="TId"/>
+          <Item Value="TFName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="STeacherVO1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

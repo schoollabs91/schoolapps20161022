@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SBookEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="S_BOOK"
+  AliasName="SBookEO"
+  BindingStyle="JDBC">
+  <Attribute
+    Name="BookId"
+    IsNotNull="true"
+    ColumnName="BOOK_ID"
+    SQLType="NUMERIC"
+    Type="java.lang.Long"
+    ColumnType="NUMBER"
+    TableName="S_BOOK"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="Isbn"
+    Precision="20"
+    ColumnName="ISBN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_BOOK">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BookTitle"
+    Precision="200"
+    ColumnName="BOOK_TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_BOOK">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BookAuthor"
+    Precision="200"
+    ColumnName="BOOK_AUTHOR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_BOOK">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BookRemarks"
+    Precision="400"
+    ColumnName="BOOK_REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_BOOK">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="400"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BookPublishDate"
+    ColumnName="BOOK_PUBLISH_DATE"
+    SQLType="DATE"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="S_BOOK"/>
+  <Attribute
+    Name="ActiveYn"
+    Precision="1"
+    ColumnName="ACTIVE_YN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_BOOK">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BookTypeCode"
+    Precision="20"
+    ColumnName="BOOK_TYPE_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_BOOK">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BookCover"
+    IsQueriable="false"
+    ColumnName="BOOK_COVER"
+    SQLType="BLOB"
+    Type="java.sql.Blob"
+    ColumnType="BLOB"
+    TableName="S_BOOK"/>
+  <Attribute
+    Name="LocDirection"
+    Precision="20"
+    ColumnName="LOC_DIRECTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_BOOK">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocShelve"
+    Precision="20"
+    ColumnName="LOC_SHELVE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_BOOK">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="SBookPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_BOOK_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lab.kot.school.model.eo.SBookEO.BookId"/>
+    </AttrArray>
+  </Key>
+</Entity>

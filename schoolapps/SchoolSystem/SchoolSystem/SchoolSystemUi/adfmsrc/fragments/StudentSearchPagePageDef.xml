@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="StudentSearchPagePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SStudentVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="SStudentVO1Iterator"/>
+    <searchRegion Criteria="StudentSearchCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SStudentVO1Iterator" id="StudentSearchCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SStudentVO1Iterator" id="SStudentVO1">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.SStudentVO" Name="SStudentVO10">
+        <AttrNames>
+          <Item Value="SId"/>
+          <Item Value="SFirstName"/>
+          <Item Value="SLastName"/>
+          <Item Value="SMiddleName"/>
+          <Item Value="SGender"/>
+          <Item Value="SNationality"/>
+          <Item Value="SDateOfBitrh"/>
+          <Item Value="SBirthPlace"/>
+          <Item Value="SPhoto"/>
+          <Item Value="SAdressLine1"/>
+          <Item Value="SAdressLine2"/>
+          <Item Value="SCity"/>
+          <Item Value="SBloodGroup"/>
+          <Item Value="SState"/>
+          <Item Value="SPin"/>
+          <Item Value="SCountry"/>
+          <Item Value="SAddressLine3"/>
+          <Item Value="SFatherName"/>
+          <Item Value="SMotherName"/>
+          <Item Value="SPhoneNo"/>
+          <Item Value="SFamilyIncome"/>
+          <Item Value="SFatherOccupation"/>
+          <Item Value="SFatherQual"/>
+          <Item Value="SMotherOccupation"/>
+          <Item Value="SMotherQual"/>
+          <Item Value="SId1"/>
+          <Item Value="ClassCode"/>
+          <Item Value="SectionCode"/>
+          <Item Value="SessionCode"/>
+          <Item Value="RollNo"/>
+          <Item Value="PromotionFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SStudentVO1Iterator" id="SStudentVO11">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.SStudentVO" Name="SStudentVO110">
+        <AttrNames>
+          <Item Value="SId"/>
+          <Item Value="SFirstName"/>
+          <Item Value="SLastName"/>
+          <Item Value="SMiddleName"/>
+          <Item Value="SGender"/>
+          <Item Value="SNationality"/>
+          <Item Value="SDateOfBitrh"/>
+          <Item Value="SBirthPlace"/>
+          <Item Value="SPhoto"/>
+          <Item Value="SAdressLine1"/>
+          <Item Value="SAdressLine2"/>
+          <Item Value="SCity"/>
+          <Item Value="SBloodGroup"/>
+          <Item Value="SState"/>
+          <Item Value="SPin"/>
+          <Item Value="SCountry"/>
+          <Item Value="SAddressLine3"/>
+          <Item Value="SFatherName"/>
+          <Item Value="SMotherName"/>
+          <Item Value="SPhoneNo"/>
+          <Item Value="SFamilyIncome"/>
+          <Item Value="SFatherOccupation"/>
+          <Item Value="SFatherQual"/>
+          <Item Value="SMotherOccupation"/>
+          <Item Value="SMotherQual"/>
+          <Item Value="SId1"/>
+          <Item Value="ClassCode"/>
+          <Item Value="SectionCode"/>
+          <Item Value="SessionCode"/>
+          <Item Value="RollNo"/>
+          <Item Value="PromotionFlag"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SStudentVO1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SStudentVO1Iterator" id="setCurrentRowWithKey" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKey">
+      <NamedData NDName="rowKey" NDValue="#{item.rowKeyStr}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

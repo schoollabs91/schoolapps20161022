@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.StudentAttendSearchBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="#{schoolsystemuiBundle.SELECT_CLASS_AND_NEXT}" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:link actionListener="#{bindings.ExecuteWithParams.execute}" text="Select &amp; Next"
+                   disabled="#{!bindings.ExecuteWithParams.enabled}" id="l1" action="search"/>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical" halign="center">
+        <af:panelFormLayout id="pfl1">
+          <af:selectOneChoice value="#{bindings.SessionCode.inputValue}" label="#{bindings.SessionCode.label}"
+                              required="#{bindings.SessionCode.hints.mandatory}"
+                              shortDesc="#{bindings.SessionCode.hints.tooltip}" id="soc1">
+            <f:selectItems value="#{bindings.SessionCode.items}" id="si1"/>
+            <f:validator binding="#{bindings.SessionCode.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.ClassClode.inputValue}" label="#{bindings.ClassClode.label}"
+                              required="#{bindings.ClassClode.hints.mandatory}"
+                              shortDesc="#{bindings.ClassClode.hints.tooltip}" id="soc2">
+            <f:selectItems value="#{bindings.ClassClode.items}" id="si2"/>
+            <f:validator binding="#{bindings.ClassClode.validator}"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.SectionCode.inputValue}" label="#{bindings.SectionCode.label}"
+                              required="#{bindings.SectionCode.hints.mandatory}"
+                              shortDesc="#{bindings.SectionCode.hints.tooltip}" id="soc3">
+            <f:selectItems value="#{bindings.SectionCode.items}" id="si3"/>
+            <f:validator binding="#{bindings.SectionCode.validator}"/>
+          </af:selectOneChoice>
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

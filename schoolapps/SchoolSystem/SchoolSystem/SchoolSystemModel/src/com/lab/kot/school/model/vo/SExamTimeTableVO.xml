@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SExamTimeTableVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  PageIterMode="Full">
+  <ViewAccessor
+    Name="SClassVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SClassVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SSubjectsVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SSubjectsVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SSessionVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SSessionVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="STimeTableVA"
+    ViewObjectName="com.lab.kot.school.model.vo.STimeTableVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SCommonLookupVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SCommonLookupVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ClassCode"
+    ListVOName="SClassVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ClassCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ClassName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ClassName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SubjectCode"
+    ListVOName="SSubjectsVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SubjectCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SubjectCode"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ExamType"
+    ListVOName="SCommonLookupVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ExamType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LovFieldValue"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LovLongName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SExamTimeTable1"
+    Entity="com.lab.kot.school.model.eo.SExamTimeTableEO"/>
+  <ViewAttribute
+    Name="SDate"
+    PrecisionRule="true"
+    EntityAttrName="SDate"
+    EntityUsage="SExamTimeTable1"
+    AliasName="S_DATE"/>
+  <ViewAttribute
+    Name="SDay"
+    PrecisionRule="true"
+    EntityAttrName="SDay"
+    EntityUsage="SExamTimeTable1"
+    AliasName="S_DAY"/>
+  <ViewAttribute
+    Name="SubjectCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SubjectCode"
+    EntityUsage="SExamTimeTable1"
+    AliasName="SUBJECT_CODE"
+    LOVName="LOV_SubjectCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PaperCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PaperCode"
+    EntityUsage="SExamTimeTable1"
+    AliasName="PAPER_CODE"/>
+  <ViewAttribute
+    Name="ClassCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ClassCode"
+    EntityUsage="SExamTimeTable1"
+    AliasName="CLASS_CODE"
+    LOVName="LOV_ClassCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ExamType"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ExamType"
+    EntityUsage="SExamTimeTable1"
+    AliasName="EXAM_TYPE"
+    LOVName="LOV_ExamType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="TimeSlotFrom"
+    PrecisionRule="true"
+    EntityAttrName="TimeSlotFrom"
+    EntityUsage="SExamTimeTable1"
+    AliasName="TIME_SLOT_FROM"/>
+  <ViewAttribute
+    Name="TimeSlotTo"
+    PrecisionRule="true"
+    EntityAttrName="TimeSlotTo"
+    EntityUsage="SExamTimeTable1"
+    AliasName="TIME_SLOT_TO"/>
+  <ViewAttribute
+    Name="SessionCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SessionCode"
+    EntityUsage="SExamTimeTable1"
+    AliasName="SESSION_CODE"/>
+  <ViewCriteria
+    Name="SExamTimeTableVOCriteria"
+    ViewObjectName="com.lab.kot.school.model.vo.SExamTimeTableVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SExamTimeTableVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="SDate"
+        ViewAttribute="SDate"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SubjectCode"
+        ViewAttribute="SubjectCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SExamTimeTableVOCriteria_SExamTimeTableVOCriteria_row_0_ClassCode"
+        ViewAttribute="ClassCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="TimeSlotFrom"
+        ViewAttribute="TimeSlotFrom"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+</ViewObject>

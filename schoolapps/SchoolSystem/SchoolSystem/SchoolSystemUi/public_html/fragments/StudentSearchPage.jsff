@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.StudentSearchPageBundle']}"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelHeader text="#{schoolsystemuiBundle.STUDENT_SEARCH}" id="ph1">
+            <f:facet name="context"/>
+            <f:facet name="menuBar"/>
+            <f:facet name="toolbar">
+                <af:toolbar id="t1">
+                    <af:button text="Registration" id="b1" disabled="#{!bindings.CreateInsert.enabled}"
+                               actionListener="#{bindings.CreateInsert.execute}" action="addedit"
+                               icon="/images/s_Add.png"/>
+                </af:toolbar>
+            </f:facet>
+            <f:facet name="legend"/>
+            <f:facet name="info"/>
+            <af:panelGroupLayout id="pgl2" layout="vertical">
+                <af:panelGroupLayout layout="vertical" id="pgl3">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.StudentSearchCriteriaQuery.queryDescriptor}"
+                              model="#{bindings.StudentSearchCriteriaQuery.queryModel}"
+                              queryListener="#{bindings.StudentSearchCriteriaQuery.processQuery}"
+                              queryOperationListener="#{bindings.StudentSearchCriteriaQuery.processQueryOperation}"
+                              resultComponentId="::lv1" rows="2" maxColumns="3" fieldWidth="30" labelWidth="30"
+                              displayMode="compact" modeChangeVisible="false" saveQueryMode="hidden"/>
+                </af:panelGroupLayout>
+                <af:panelHeader text="#{schoolsystemuiBundle.LIST_OF_STUDENTS}" id="ph2">
+                    <f:facet name="context"/>
+                    <f:facet name="menuBar"/>
+                    <f:facet name="toolbar">
+                      
+                    </f:facet>
+                    <f:facet name="legend"/>
+                    <f:facet name="info"/>
+                    <af:listView value="#{bindings.SStudentVO1.collectionModel}" var="item"
+                             emptyText="#{bindings.SStudentVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                             fetchSize="#{bindings.SStudentVO1.rangeSize}" id="lv1">
+                    <af:listItem id="li1">
+                        <af:panelGridLayout id="pgl4">                       
+                            <af:gridRow marginTop="2px" height="95%" marginBottom="2px" id="gr1">
+                                <af:gridCell marginStart="2px" width="30%" id="gc1">
+                                    <af:panelGroupLayout id="pgl5" layout="vertical">
+                                         
+                                        </af:panelGroupLayout>
+                                </af:gridCell>
+                                <af:gridCell marginStart="1px" width="70%" marginEnd="2px" id="gc2">
+                                        <af:panelBox text="Student Info" id="pb1">
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t2">
+                                                <af:button actionListener="#{bindings.setCurrentRowWithKey.execute}"
+                                                       text="Edit"
+                                                        id="b2"
+                                                       action="addedit" icon="/images/sEdit.png"/>
+                                                </af:toolbar>
+                                            </f:facet>                                        
+                                        <af:panelGroupLayout id="pgl6" layout="vertical">
+                                        <af:panelFormLayout id="pfl1" maxColumns="3" rows="3">
+                                            <f:facet name="footer"/>
+                                            <af:inputText value="#{item.bindings.SId.inputValue}"
+                                                          label="#{bindings.SStudentVO11.hints.SId.label}"
+                                                          required="#{bindings.SStudentVO11.hints.SId.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.SId.displayWidth}"
+                                                          maximumLength="#{bindings.SStudentVO11.hints.SId.precision}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.SId.tooltip}"
+                                                          id="it1" readOnly="true">
+                                                <f:validator binding="#{item.bindings.SId.validator}"/>
+                                            </af:inputText>
+                                            <af:inputText value="#{item.bindings.SFirstName.inputValue}"
+                                                          label="#{bindings.SStudentVO11.hints.SFirstName.label}"
+                                                          required="#{bindings.SStudentVO11.hints.SFirstName.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.SFirstName.displayWidth}"
+                                                          maximumLength="#{bindings.SStudentVO11.hints.SFirstName.precision}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.SFirstName.tooltip}"
+                                                          id="it2" readOnly="true">
+                                                <f:validator binding="#{item.bindings.SFirstName.validator}"/>
+                                            </af:inputText>
+                                            <af:inputText value="#{item.bindings.SLastName.inputValue}"
+                                                          label="#{bindings.SStudentVO11.hints.SLastName.label}"
+                                                          required="#{bindings.SStudentVO11.hints.SLastName.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.SLastName.displayWidth}"
+                                                          maximumLength="#{bindings.SStudentVO11.hints.SLastName.precision}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.SLastName.tooltip}"
+                                                          id="it3" readOnly="true">
+                                                <f:validator binding="#{item.bindings.SLastName.validator}"/>
+                                            </af:inputText>
+                                            <af:inputText value="#{item.bindings.SMiddleName.inputValue}"
+                                                          label="#{bindings.SStudentVO11.hints.SMiddleName.label}"
+                                                          required="#{bindings.SStudentVO11.hints.SMiddleName.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.SMiddleName.displayWidth}"
+                                                          maximumLength="#{bindings.SStudentVO11.hints.SMiddleName.precision}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.SMiddleName.tooltip}"
+                                                          id="it4" readOnly="true">
+                                                <f:validator binding="#{item.bindings.SMiddleName.validator}"/>
+                                            </af:inputText>
+                                            <af:inputText value="#{item.bindings.SGender.inputValue}"
+                                                          label="#{bindings.SStudentVO11.hints.SGender.label}"
+                                                          required="#{bindings.SStudentVO11.hints.SGender.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.SGender.displayWidth}"
+                                                          maximumLength="#{bindings.SStudentVO11.hints.SGender.precision}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.SGender.tooltip}"
+                                                          id="it5" readOnly="true">
+                                                <f:validator binding="#{item.bindings.SGender.validator}"/>
+                                            </af:inputText>
+                                            <af:inputDate value="#{item.bindings.SDateOfBitrh.inputValue}"
+                                                          label="#{bindings.SStudentVO11.hints.SDateOfBitrh.label}"
+                                                          required="#{bindings.SStudentVO11.hints.SDateOfBitrh.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.SDateOfBitrh.displayWidth}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.SDateOfBitrh.tooltip}"
+                                                          id="id1" readOnly="true">
+                                                <f:validator binding="#{item.bindings.SDateOfBitrh.validator}"/>
+                                                <af:convertDateTime pattern="#{bindings.SStudentVO11.hints.SDateOfBitrh.format}"/>
+                                            </af:inputDate>
+                                            <af:inputText value="#{item.bindings.SBloodGroup.inputValue}"
+                                                          label="#{bindings.SStudentVO11.hints.SBloodGroup.label}"
+                                                          required="#{bindings.SStudentVO11.hints.SBloodGroup.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.SBloodGroup.displayWidth}"
+                                                          maximumLength="#{bindings.SStudentVO11.hints.SBloodGroup.precision}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.SBloodGroup.tooltip}"
+                                                          id="it12" readOnly="true">
+                                                <f:validator binding="#{item.bindings.SBloodGroup.validator}"/>
+                                            </af:inputText>
+                                            <af:selectOneChoice value="#{item.bindings.ClassCode.inputValue}"
+                                                                label="#{item.bindings.ClassCode.label}"
+                                                                required="#{bindings.SStudentVO11.hints.ClassCode.mandatory}"
+                                                                shortDesc="#{bindings.SStudentVO11.hints.ClassCode.tooltip}"
+                                                                id="soc1" readOnly="true">
+                                                <f:selectItems value="#{item.bindings.ClassCode.items}" id="si1"/>
+                                                <f:validator binding="#{item.bindings.ClassCode.validator}"/>
+                                            </af:selectOneChoice>
+                                            <af:selectOneChoice value="#{item.bindings.SectionCode.inputValue}"
+                                                                label="#{item.bindings.SectionCode.label}"
+                                                                required="#{bindings.SStudentVO11.hints.SectionCode.mandatory}"
+                                                                shortDesc="#{bindings.SStudentVO11.hints.SectionCode.tooltip}"
+                                                                id="soc2" readOnly="true">
+                                                <f:selectItems value="#{item.bindings.SectionCode.items}" id="si2"/>
+                                                <f:validator binding="#{item.bindings.SectionCode.validator}"/>
+                                            </af:selectOneChoice>
+                                            <af:selectOneChoice value="#{item.bindings.SessionCode.inputValue}"
+                                                                label="#{item.bindings.SessionCode.label}"
+                                                                required="#{bindings.SStudentVO11.hints.SessionCode.mandatory}"
+                                                                shortDesc="#{bindings.SStudentVO11.hints.SessionCode.tooltip}"
+                                                                id="soc3" readOnly="true">
+                                                <f:selectItems value="#{item.bindings.SessionCode.items}" id="si3"/>
+                                                <f:validator binding="#{item.bindings.SessionCode.validator}"/>
+                                            </af:selectOneChoice>
+                                            <af:inputText value="#{item.bindings.RollNo.inputValue}"
+                                                          label="#{bindings.SStudentVO11.hints.RollNo.label}"
+                                                          required="#{bindings.SStudentVO11.hints.RollNo.mandatory}"
+                                                          columns="#{bindings.SStudentVO11.hints.RollNo.displayWidth}"
+                                                          maximumLength="#{bindings.SStudentVO11.hints.RollNo.precision}"
+                                                          shortDesc="#{bindings.SStudentVO11.hints.RollNo.tooltip}"
+                                                          id="it26" readOnly="true">
+                                                <f:validator binding="#{item.bindings.RollNo.validator}"/>
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.SStudentVO11.hints.RollNo.format}"/>
+                                            </af:inputText>
+                                        </af:panelFormLayout>
+                                    </af:panelGroupLayout>
+                                     </af:panelBox>
+                                </af:gridCell>
+                            </af:gridRow>
+                        </af:panelGridLayout>
+                    </af:listItem>
+                </af:listView>
+                </af:panelHeader>
+                
+            </af:panelGroupLayout>
+        </af:panelHeader>
+    </af:panelGroupLayout>
+</ui:composition>

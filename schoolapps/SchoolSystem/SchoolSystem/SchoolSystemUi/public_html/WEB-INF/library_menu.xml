@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="itemNode_BookPage" label="Book Store" action="BookPage" focusViewId="/BookPage"/>
+  <itemNode id="itemNode_BookAllocationPage" label="Book Allocation" action="BookAllocationPage"
+            focusViewId="/BookAllocationPage"/>
+  <itemNode id="itemNode_BookReturnPage" label="Book Return" action="BookReturnPage"
+            focusViewId="/BookReturnPage"/>
+</menu>

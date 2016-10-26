@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.TimeTableSearchPageBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="#{schoolsystemuiBundle.CLASS_TIME_TABLE}" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar"/>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:panelGroupLayout layout="vertical" id="pgl3">
+        
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.STimeTableSearchCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.STimeTableSearchCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.STimeTableSearchCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.STimeTableSearchCriteriaQuery.processQueryOperation}"
+                      rows="2" maxColumns="2" fieldWidth="40" labelWidth="40" modeChangeVisible="false"
+                      saveQueryMode="hidden" resultComponentId="::pc1:t1"/>
+          
+        </af:panelGroupLayout>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:button actionListener="#{bindings.CreateInsert.execute}" text="Time Table"
+                         disabled="#{!bindings.CreateInsert.enabled}" id="b1" icon="/images/s_Add.png"/>
+              <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                         disabled="#{!bindings.Delete.enabled}" id="b2" immediate="true" icon="/images/sRemove1.png">
+                <af:resetActionListener/>
+              </af:button>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.STimeTableVO1.collectionModel}" var="row"
+                    rows="#{bindings.STimeTableVO1.rangeSize}"
+                    emptyText="#{bindings.STimeTableVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.STimeTableVO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.STimeTableVO1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.STimeTableVO1.rangeSize}" id="t1" partialTriggers="::b1 ::b2">
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.Monday.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.Monday.label}" id="c1">
+              <af:selectOneChoice value="#{row.bindings.Monday.inputValue}" label="#{row.bindings.Monday.label}"
+                                  required="#{bindings.STimeTableVO1.hints.Monday.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.Monday.tooltip}" id="soc1">
+                <f:selectItems value="#{row.bindings.Monday.items}" id="si1"/>
+                <f:validator binding="#{row.bindings.Monday.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.Tuesday.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.Tuesday.label}" id="c2">
+              <af:selectOneChoice value="#{row.bindings.Tuesday.inputValue}" label="#{row.bindings.Tuesday.label}"
+                                  required="#{bindings.STimeTableVO1.hints.Tuesday.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.Tuesday.tooltip}" id="soc2">
+                <f:selectItems value="#{row.bindings.Tuesday.items}" id="si2"/>
+                <f:validator binding="#{row.bindings.Tuesday.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.Wednesday.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.Wednesday.label}" id="c3">
+              <af:selectOneChoice value="#{row.bindings.Wednesday.inputValue}" label="#{row.bindings.Wednesday.label}"
+                                  required="#{bindings.STimeTableVO1.hints.Wednesday.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.Wednesday.tooltip}" id="soc3">
+                <f:selectItems value="#{row.bindings.Wednesday.items}" id="si3"/>
+                <f:validator binding="#{row.bindings.Wednesday.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.Thursday.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.Thursday.label}" id="c4">
+              <af:selectOneChoice value="#{row.bindings.Thursday.inputValue}" label="#{row.bindings.Thursday.label}"
+                                  required="#{bindings.STimeTableVO1.hints.Thursday.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.Thursday.tooltip}" id="soc4">
+                <f:selectItems value="#{row.bindings.Thursday.items}" id="si4"/>
+                <f:validator binding="#{row.bindings.Thursday.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.Friday.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.Friday.label}" id="c5">
+              <af:selectOneChoice value="#{row.bindings.Friday.inputValue}" label="#{row.bindings.Friday.label}"
+                                  required="#{bindings.STimeTableVO1.hints.Friday.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.Friday.tooltip}" id="soc5">
+                <f:selectItems value="#{row.bindings.Friday.items}" id="si5"/>
+                <f:validator binding="#{row.bindings.Friday.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.Saturday.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.Saturday.label}" id="c6">
+              <af:selectOneChoice value="#{row.bindings.Saturday.inputValue}" label="#{row.bindings.Saturday.label}"
+                                  required="#{bindings.STimeTableVO1.hints.Saturday.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.Saturday.tooltip}" id="soc6">
+                <f:selectItems value="#{row.bindings.Saturday.items}" id="si6"/>
+                <f:validator binding="#{row.bindings.Saturday.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.Sunday.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.Sunday.label}" id="c7">
+              <af:selectOneChoice value="#{row.bindings.Sunday.inputValue}" label="#{row.bindings.Sunday.label}"
+                                  required="#{bindings.STimeTableVO1.hints.Sunday.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.Sunday.tooltip}" id="soc7">
+                <f:selectItems value="#{row.bindings.Sunday.items}" id="si7"/>
+                <f:validator binding="#{row.bindings.Sunday.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.TId.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.TId.label}" id="c8">
+              <af:inputText value="#{row.bindings.TId.inputValue}" label="#{bindings.STimeTableVO1.hints.TId.label}"
+                            required="#{bindings.STimeTableVO1.hints.TId.mandatory}"
+                            columns="#{bindings.STimeTableVO1.hints.TId.displayWidth}"
+                            maximumLength="#{bindings.STimeTableVO1.hints.TId.precision}"
+                            shortDesc="#{bindings.STimeTableVO1.hints.TId.tooltip}" id="it1">
+                <f:validator binding="#{row.bindings.TId.validator}"/>
+              </af:inputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.ClassCode.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.ClassCode.label}" id="c9">
+              <af:selectOneChoice value="#{row.bindings.ClassCode.inputValue}" label="#{row.bindings.ClassCode.label}"
+                                  required="#{bindings.STimeTableVO1.hints.ClassCode.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.ClassCode.tooltip}" id="soc8">
+                <f:selectItems value="#{row.bindings.ClassCode.items}" id="si8"/>
+                <f:validator binding="#{row.bindings.ClassCode.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.SectionCode.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.SectionCode.label}" id="c10">
+              <af:selectOneChoice value="#{row.bindings.SectionCode.inputValue}"
+                                  label="#{row.bindings.SectionCode.label}"
+                                  required="#{bindings.STimeTableVO1.hints.SectionCode.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.SectionCode.tooltip}" id="soc9">
+                <f:selectItems value="#{row.bindings.SectionCode.items}" id="si9"/>
+                <f:validator binding="#{row.bindings.SectionCode.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.SessionCode.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.SessionCode.label}" id="c11">
+              <af:selectOneChoice value="#{row.bindings.SessionCode.inputValue}"
+                                  label="#{row.bindings.SessionCode.label}"
+                                  required="#{bindings.STimeTableVO1.hints.SessionCode.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.SessionCode.tooltip}" id="soc10">
+                <f:selectItems value="#{row.bindings.SessionCode.items}" id="si10"/>
+                <f:validator binding="#{row.bindings.SessionCode.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.SubjectCode.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.SubjectCode.label}" id="c12">
+              <af:selectOneChoice value="#{row.bindings.SubjectCode.inputValue}"
+                                  label="#{row.bindings.SubjectCode.label}"
+                                  required="#{bindings.STimeTableVO1.hints.SubjectCode.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.SubjectCode.tooltip}" id="soc11">
+                <f:selectItems value="#{row.bindings.SubjectCode.items}" id="si11"/>
+                <f:validator binding="#{row.bindings.SubjectCode.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+            <af:column sortProperty="#{bindings.STimeTableVO1.hints.TimeSlot.name}" sortable="true"
+                       headerText="#{bindings.STimeTableVO1.hints.TimeSlot.label}" id="c13">
+              <af:selectOneChoice value="#{row.bindings.TimeSlot.inputValue}" label="#{row.bindings.TimeSlot.label}"
+                                  required="#{bindings.STimeTableVO1.hints.TimeSlot.mandatory}"
+                                  shortDesc="#{bindings.STimeTableVO1.hints.TimeSlot.tooltip}" id="soc12">
+                <f:selectItems value="#{row.bindings.TimeSlot.items}" id="si12"/>
+                <f:validator binding="#{row.bindings.TimeSlot.validator}"/>
+              </af:selectOneChoice>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

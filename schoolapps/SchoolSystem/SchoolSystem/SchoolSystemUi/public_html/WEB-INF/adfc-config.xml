@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <metadata-resource id="__18">/WEB-INF/Student-Menu.xml</metadata-resource>
+  <metadata-resource id="__19">/WEB-INF/Teacher-Menu.xml</metadata-resource>
+  <metadata-resource id="__20">/WEB-INF/Library-Menu.xml</metadata-resource>
+  <metadata-resource id="__1">/WEB-INF/Admin-Menu.xml</metadata-resource>
+  <view id="StudentPage">
+    <page>/pages/StudentPage.jsf</page>
+  </view>
+  <view id="StudentAttendPage">
+    <page>/pages/StudentAttendPage.jsf</page>
+  </view>
+  <view id="TeacherPage">
+    <page>/pages/TeacherPage.jsf</page>
+  </view>
+  <view id="TeacherAttendPage">
+    <page>/pages/TeacherAttendPage.jsf</page>
+  </view>
+  <view id="BookPage">
+    <page>/pages/BookPage.jsf</page>
+  </view>
+  <view id="BookAllocationPage">
+    <page>/pages/BookAllocationPage.jsf</page>
+  </view>
+  <control-flow-rule id="__3">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>StudentPage</from-outcome>
+      <to-activity-id>StudentPage</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__5">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>StudentAttendPage</from-outcome>
+      <to-activity-id>StudentAttendPage</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__7">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__9">
+      <from-outcome>TeacherPage</from-outcome>
+      <to-activity-id>TeacherPage</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__8">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__10">
+      <from-outcome>TeacherAttendPage</from-outcome>
+      <to-activity-id>TeacherAttendPage</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__14">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__16">
+      <from-outcome>BookPage</from-outcome>
+      <to-activity-id>BookPage</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__15">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__17">
+      <from-outcome>BookAllocationPage</from-outcome>
+      <to-activity-id>BookAllocationPage</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__11">
+    <description>Menu Model Managed Bean</description>
+    <managed-bean-name>root_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property id="__12">
+      <property-name>createHiddenNodes</property-name>
+      <value>false</value>
+    </managed-property>
+    <managed-property id="__13">
+      <property-name>source</property-name>
+      <property-class>java.lang.String</property-class>
+      <value>/WEB-INF/root_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+</adfc-config>

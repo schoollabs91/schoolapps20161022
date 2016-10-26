@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="StudentBTF">
+    <default-activity>router1</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__11">
+      <name>oper</name>
+      <value>#{pageFlowScope.oper}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <view id="StudentSearchPage">
+      <page>/fragments/StudentSearchPage.jsff</page>
+    </view>
+    <view id="StudentAddEditPage">
+      <page>/fragments/StudentAddEditPage.jsff</page>
+    </view>
+    <task-flow-return id="taskFlowReturn1">
+      <outcome>
+        <name>taskFlowReturn1</name>
+      </outcome>
+    </task-flow-return>
+    <router id="router1">
+      <case id="__9">
+        <expression>#{pageFlowScope.oper == 'registration'}</expression>
+        <outcome>registration</outcome>
+      </case>
+      <case id="__10">
+        <expression>#{pageFlowScope.oper eq 'search'}</expression>
+        <outcome>search</outcome>
+      </case>
+      <default-outcome>search</default-outcome>
+    </router>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__1">
+      <from-activity-id>StudentSearchPage</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>addedit</from-outcome>
+        <to-activity-id>StudentAddEditPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>StudentAddEditPage</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>StudentSearchPage</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>return</from-outcome>
+        <to-activity-id>taskFlowReturn1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>search</from-outcome>
+        <to-activity-id>StudentSearchPage</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>registration</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>StudentAddEditPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core"
+                    xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.templates.smartTemplateBundle']}"/>
+    <af:xmlContent>
+        <afc:component>
+            <afc:description/>
+            <afc:display-name>smartTemplate</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>Content</afc:facet-name>
+            </afc:facet>
+        </afc:component>
+    </af:xmlContent>
+    <af:panelSplitter orientation="horizontal" splitterPosition="200" id="pt_ps1" 
+                      disabled="true"
+                      collapsed="#{pageFlowScope.actionMenu eq null ? 'true': pageFlowScope.actionMenu }"
+                      secondLandmark="main" inlineStyle="background-color:#1D4A71;" partialTriggers="pt_l4">
+        <f:facet name="first">
+            <!-- Left -->         
+                <af:panelGroupLayout id="pt_pgl3" layout="scroll">
+                <af:panelBox text="Favourites" id="pt_pb5" type="flow">
+                    <f:facet name="toolbar"/>
+                </af:panelBox>
+                <af:panelBox text="#{schoolsystemuiBundle.STUDENT}" id="pt_pb1" disclosed="false" type="flow">
+                    <f:facet name="toolbar"/>
+                     <af:listView value="#{student_menu}" var="studentmenu" emptyText="No data to display"
+                                     id="pt_lv1">
+                            <af:listItem id="pt_li1">
+                                <af:panelGroupLayout layout="horizontal" id="pt_pgl4">
+                                    <f:facet name="separator">
+                                        <af:spacer width="1" id="pt_s2"/>
+                                    </f:facet>
+                                    <af:link text="#{studentmenu.label}" id="pt_l11"
+                                             destination="#{studentmenu.destination}" action="#{studentmenu.doAction}"></af:link>
+                                </af:panelGroupLayout>
+                            </af:listItem>
+                        </af:listView>
+                </af:panelBox>
+                <af:panelBox text="#{schoolsystemuiBundle.TEACHER}" id="pt_pb2" disclosed="false" type="flow">
+                    <f:facet name="toolbar"/>
+                    <af:listView value="#{teacher_menu}" var="teachermenu"
+                                                 emptyText="No data to display"
+                                                 id="pt_lv2">
+                                        <af:listItem id="pt_li2">
+                                            <af:panelGroupLayout layout="horizontal" id="pt_pgl51">
+                                                <f:facet name="separator">
+                                                    <af:spacer width="1" id="pt_s3"/>
+                                                </f:facet>
+                                                <af:link text="#{teachermenu.label}" id="pt_l21"
+                                                         destination="#{teachermenu.destination}"
+                                                         action="#{teachermenu.doAction}">                                                  
+                                                </af:link>
+                                            </af:panelGroupLayout>
+                                        </af:listItem>
+                                    </af:listView>
+                </af:panelBox>
+                <af:panelBox text="#{schoolsystemuiBundle.LIBRARY}" id="pt_pb3" disclosed="false" type="flow">
+                    <f:facet name="toolbar"/>
+                    <af:listView value="#{library_menu}" var="librarymenu"
+                                                         emptyText="No data to display" id="pt_lv3">
+                                                <af:listItem id="pt_li12">
+                                                    <af:panelGroupLayout layout="horizontal" id="pt_pgl42">
+                                                        <f:facet name="separator">
+                                                            <af:spacer width="1" id="pt_s22"/>
+                                                        </f:facet>
+                                                        <af:link text="#{librarymenu.label}" id="pt_l13"
+                                                                 destination="#{librarymenu.destination}"
+                                                                 action="#{librarymenu.doAction}">
+                                                        </af:link>
+                                                    </af:panelGroupLayout>
+                                                </af:listItem>
+                                            </af:listView>
+                </af:panelBox>
+                <af:panelBox text="#{schoolsystemuiBundle.ADMINISTRATION}" id="pt_pb4" disclosed="false" type="flow">
+                    <f:facet name="toolbar"/>
+                    <af:listView value="#{admin_menu}" var="adminmenu"
+                                                         emptyText="No data to display" id="pt_lv4">
+                                                <af:listItem id="pt_li13">
+                                                    <af:panelGroupLayout layout="horizontal" id="pt_pgl43">
+                                                        <f:facet name="separator">
+                                                            <af:spacer width="1" id="pt_s23"/>
+                                                        </f:facet>
+                                                        <af:link text="#{adminmenu.label}" id="pt_l131"
+                                                                 destination="#{adminmenu.destination}"
+                                                                 action="#{adminmenu.doAction}">
+                                                        </af:link>
+                                                    </af:panelGroupLayout>
+                                                </af:listItem>
+                                            </af:listView>
+                </af:panelBox>
+                
+                <af:panelAccordion discloseMany="false" id="pt_pa1" rendered="false">
+                    <af:showDetailItem id="pane1" text="#{schoolsystemuiBundle.STUDENT}" disclosed="true">
+                       
+                    </af:showDetailItem>
+                    <af:showDetailItem id="pane2" text="#{schoolsystemuiBundle.TEACHER}">
+                    
+                    </af:showDetailItem>
+                    <af:showDetailItem id="pane3" text="#{schoolsystemuiBundle.LIBRARY}">
+                     
+                    </af:showDetailItem>
+                    <af:showDetailItem id="pane4" text="#{schoolsystemuiBundle.ADMINISTRATION}">
+                     
+                    </af:showDetailItem>
+                    <af:showDetailItem id="pane5" text="#{schoolsystemuiBundle.EXAMS_SCHEDULE}"/>
+                    <af:showDetailItem id="pane6" text="#{schoolsystemuiBundle.CLASS_TIME_TABLE}"/>
+                </af:panelAccordion>
+               
+                </af:panelGroupLayout>          
+        </f:facet>
+        <f:facet name="second">
+            <af:panelGridLayout id="pt_pgl1">
+                <af:gridRow height="28px" id="pt_gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc1">
+                        <!-- Partial Header -->
+                        <af:panelGroupLayout id="pt_pgl2" layout="horizontal" inlineStyle="background-color:#1D4A71;">
+                            <af:toolbar id="pt_t1">
+                            <af:link icon="/images/navigator_ena.png" id="pt_l4" partialSubmit="true" immediate="true">
+                                <af:setPropertyListener type="action"
+                                                        from="#{pageFlowScope.actionMenu eq 'false' ? 'true': 'false' }"
+                                                        to="#{pageFlowScope.actionMenu}"/>
+                                <af:setPropertyListener type="action"
+                                                        from="#{sessionScope.highLight eq null ? 'level1Opaque': (sessionScope.highLight eq 'level1' ?'level1Opaque':'level1') }"
+                                                        to="#{sessionScope.highLight}"/>
+                            </af:link>
+                            <af:link id="pt_l2" icon="/images/banner.png" partialSubmit="true"/>
+                            <af:spacer width="500" height="10" id="pt_s1"/>
+                            <af:link id="pt_l3" icon="/images/home_ena.png"/>
+                            <af:link id="pt_l5" icon="/images/favorites_ena.png"/>
+                            <af:link id="pt_l6" icon="/images/watchlist_ena.png"/>
+                            <af:link id="pt_l7" icon="/images/notifications_ena.png"/>
+                            <af:link id="pt_l8" icon="/images/accessibility_ena.png"/>
+                            <af:link id="pt_l9" icon="/images/help_ena.png"/>
+                            <af:outputText value="user1" id="pt_ot1" inlineStyle="color:White; font-weight:bold;"/>
+                            <af:spacer width="5" height="10" id="pt_s15"/>
+                            <af:link id="pt_l10" inlineStyle="color:White; font-weight:200;" partialSubmit="true"
+                                     icon="/images/watchlist_ena.png" immediate="true">
+                                <af:showPopupBehavior popupId="pt_p1" triggerType="click"/>                                    
+                                </af:link>
+                            <af:spacer width="500" height="10" id="pt_s5"/>
+                            <af:popup childCreation="deferred" autoCancel="disabled" id="pt_p1">
+                                    <af:panelWindow id="pt_pw1">
+                                    
+                                        <af:panelGroupLayout id="pt_pgl6" layout="vertical">
+                                        <af:image source="/images/IMG_20160130_175930320.jpg" id="pt_i1"/>
+                                            <af:panelGroupLayout id="pt_pgl7" layout="horizontal">
+                                                <af:button text="My Account" id="pt_b1"/>
+                                                <af:spacer width="10" height="10" id="pt_s4"/>
+                                                <af:button text="Sign Out" id="pt_b2"/>
+                                            </af:panelGroupLayout>
+                                        </af:panelGroupLayout>
+                                </af:panelWindow>
+                            </af:popup>
+                            </af:toolbar>
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                <af:gridRow height="100%" id="pt_gr2">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="pt_gc2">
+                        <!-- Content -->
+                        <af:panelGroupLayout id="pt_pgl5" layout="scroll">
+                            <af:facetRef facetName="Content"/>
+                          
+                        </af:panelGroupLayout>
+                    </af:gridCell>
+                </af:gridRow>
+                
+            </af:panelGridLayout>
+        </f:facet>
+       
+    </af:panelSplitter>
+</af:pageTemplateDef>

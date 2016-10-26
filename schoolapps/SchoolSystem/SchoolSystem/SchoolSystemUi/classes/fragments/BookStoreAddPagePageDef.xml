@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="BookStoreAddPagePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SBookVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="SBookVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SBookVO1Iterator" id="BookId">
+      <AttrNames>
+        <Item Value="BookId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="Isbn">
+      <AttrNames>
+        <Item Value="Isbn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="BookTitle">
+      <AttrNames>
+        <Item Value="BookTitle"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="BookAuthor">
+      <AttrNames>
+        <Item Value="BookAuthor"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="BookPublishDate">
+      <AttrNames>
+        <Item Value="BookPublishDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="LocDirection">
+      <AttrNames>
+        <Item Value="LocDirection"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="LocShelve">
+      <AttrNames>
+        <Item Value="LocShelve"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="BookTypeCode">
+      <AttrNames>
+        <Item Value="BookTypeCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="BookRemarks">
+      <AttrNames>
+        <Item Value="BookRemarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="BookCover">
+      <AttrNames>
+        <Item Value="BookCover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SBookVO1Iterator" id="ActiveYn">
+      <AttrNames>
+        <Item Value="ActiveYn"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="SchoolSystemAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="SchoolSystemAMDataControl"/>
+  </bindings>
+</pageDefinition>

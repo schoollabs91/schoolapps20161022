@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="itemNode_StudentPage" label="Student Search" action="StudentPage" focusViewId="/StudentPage"/>
+  <itemNode id="itemNode_StudentAttendPage" label="Student Attendance" action="StudentAttendPage"
+            focusViewId="/StudentAttendPage"/>
+  <itemNode id="itemNode_StudentRegistration" label="Registration" action="StudentRegistration"
+            focusViewId="/StudentRegistration"/>
+  <itemNode id="itemNode_TimeTablePage" label="Class Time Table" action="TimeTablePage"
+            focusViewId="/TimeTablePage"/>
+</menu>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="StudentAttendPagePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SStudAttendVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl"
+              id="SStudAttendVO1Iterator"/>
+    <searchRegion Criteria="SStudAttendSearchCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SStudAttendVO1Iterator" id="SStudAttendSearchCriteriaQuery"/>
+    <iterator Binds="ListValuesVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="ListValuesVO1Iterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="SchoolSystemAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="SchoolSystemAMDataControl"/>
+    <tree IterBinding="SStudAttendVO1Iterator" id="SStudAttendVO1">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.SStudAttendVO" Name="SStudAttendVO10">
+        <AttrNames>
+          <Item Value="SId"/>
+          <Item Value="D1"/>
+          <Item Value="D2"/>
+          <Item Value="D3"/>
+          <Item Value="D4"/>
+          <Item Value="D5"/>
+          <Item Value="D6"/>
+          <Item Value="D7"/>
+          <Item Value="D8"/>
+          <Item Value="D9"/>
+          <Item Value="D10"/>
+          <Item Value="D11"/>
+          <Item Value="D12"/>
+          <Item Value="D13"/>
+          <Item Value="D14"/>
+          <Item Value="D15"/>
+          <Item Value="D16"/>
+          <Item Value="D17"/>
+          <Item Value="D18"/>
+          <Item Value="D19"/>
+          <Item Value="D20"/>
+          <Item Value="D21"/>
+          <Item Value="D22"/>
+          <Item Value="D23"/>
+          <Item Value="D24"/>
+          <Item Value="D25"/>
+          <Item Value="D26"/>
+          <Item Value="D27"/>
+          <Item Value="D28"/>
+          <Item Value="D29"/>
+          <Item Value="D30"/>
+          <Item Value="D31"/>
+          <Item Value="Total"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SStudAttendVO1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <list IterBinding="ListValuesVO1Iterator" StaticList="false" Uses="LOV_SessionCode" id="SessionCode"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ListValuesVO1Iterator" StaticList="false" Uses="LOV_ClassClode" id="ClassClode"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="ListValuesVO1Iterator" StaticList="false" Uses="LOV_SectionCode" id="SectionCode"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <methodAction id="copyStudentToAttendance" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="copyStudentToAttendance" IsViewObjectMethod="false"
+                  DataControl="SchoolSystemAMDataControl" InstanceName="data.SchoolSystemAMDataControl.dataProvider"
+                  ReturnName="data.SchoolSystemAMDataControl.methodResults.copyStudentToAttendance_SchoolSystemAMDataControl_dataProvider_copyStudentToAttendance_result"/>
+    <list IterBinding="ListValuesVO1Iterator" StaticList="false" Uses="LOV_SMonth" id="SMonth" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

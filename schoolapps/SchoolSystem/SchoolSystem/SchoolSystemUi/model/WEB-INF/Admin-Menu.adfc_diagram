@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">ListOfValuesPage</property>
+      <property
+         name="page">/pages/ListOfValuesPage.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ListOfValuesPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">85.09766</property>
+      <property
+         name="x">203.0293</property>
+   </View>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule3">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">85.44824</property>
+      <property
+         name="x">-2.0</property>
+   </WildcardControlFlowRule>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="WildcardControlFlowRule3"
+      to="View2">
+      <property
+         name="fromOutcome">ListOfValuesPage</property>
+      <property
+         name="sdm:polyPoints">R50,34.0,85.44824,162.0293,84.74707,L50</property>
+   </ControlFlowCase>
+</SDM>

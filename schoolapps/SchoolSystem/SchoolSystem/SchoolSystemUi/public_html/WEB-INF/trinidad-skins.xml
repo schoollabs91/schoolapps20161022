@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<skins xmlns="http://myfaces.apache.org/trinidad/skin">
+  <skin>
+    <id>schoolSkin1.desktop</id>
+    <family>schoolSkin1</family>
+    <extends>alta-v1.desktop</extends>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>skins/schoolSkin1/schoolSkin1.css</style-sheet-name>
+    <bundle-name>com.lab.kot.school.ui.skinBundle</bundle-name>
+  </skin>
+</skins>

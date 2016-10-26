@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="Allocation Info" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t1">
+          <af:button text="Save" id="b2" actionListener="#{backingBeanScope.BookAllocationAddBean.SaveActionListener}"
+                     icon="/images/sCheck.png"/>
+          <af:button text="Back" id="b1" actionListener="#{bindings.Rollback.execute}" immediate="true"
+                     action="backfromallocate" icon="/images/backsimple.png">
+            <af:resetActionListener/>
+          </af:button>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        
+        <af:panelFormLayout id="pfl1" rows="2" maxColumns="2">         
+          <af:inputText value="#{backingBeanScope.BookAllocationAddBean.SId}" label="Student ID" columns="20"
+                        maximumLength="20" 
+                        id="it2" showRequired="true" required="true" autoSubmit="true">            
+          </af:inputText>
+          <af:inputDate value="#{backingBeanScope.BookAllocationAddBean.allocatStartDate}"
+                        label="Allocation Start Date"
+                        required="true" id="id1" showRequired="true" autoSubmit="true">            
+          </af:inputDate>
+           <af:inputDate value="#{backingBeanScope.BookAllocationAddBean.allocatEndDate}"
+                        label="Allocation End Date"
+                        required="true" id="id2" showRequired="true" autoSubmit="true">            
+          </af:inputDate>
+          <af:inputText value="#{backingBeanScope.BookAllocationAddBean.remark}" label="Comments" columns="80" id="it3" rows="2"
+                        autoSubmit="true">            
+          </af:inputText>
+          
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10" id="s1"/>
+      </af:panelGroupLayout>
+      <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.BookBasketVO1.collectionModel}" var="row" rows="#{bindings.BookBasketVO1.rangeSize}"
+                  emptyText="#{bindings.BookBasketVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  rowBandingInterval="0" selectedRowKeys="#{bindings.BookBasketVO1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.BookBasketVO1.collectionModel.makeCurrent}" rowSelection="single"
+                  fetchSize="#{bindings.BookBasketVO1.rangeSize}" id="t2">
+          <af:column sortProperty="#{bindings.BookBasketVO1.hints.BookId.name}" sortable="true"
+                     headerText="#{bindings.BookBasketVO1.hints.BookId.label}" id="c1">
+            <af:outputText value="#{row.BookId}" shortDesc="#{bindings.BookBasketVO1.hints.BookId.tooltip}" id="ot1">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.BookBasketVO1.hints.BookId.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="#{bindings.BookBasketVO1.hints.Isbn.name}" sortable="true"
+                     headerText="#{bindings.BookBasketVO1.hints.Isbn.label}" id="c2">
+            <af:outputText value="#{row.Isbn}" shortDesc="#{bindings.BookBasketVO1.hints.Isbn.tooltip}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.BookBasketVO1.hints.BookTitle.name}" sortable="true"
+                     headerText="#{bindings.BookBasketVO1.hints.BookTitle.label}" id="c3">
+            <af:outputText value="#{row.BookTitle}" shortDesc="#{bindings.BookBasketVO1.hints.BookTitle.tooltip}"
+                           id="ot3"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.BookBasketVO1.hints.BookAuthor.name}" sortable="true"
+                     headerText="#{bindings.BookBasketVO1.hints.BookAuthor.label}" id="c4">
+            <af:outputText value="#{row.BookAuthor}" shortDesc="#{bindings.BookBasketVO1.hints.BookAuthor.tooltip}"
+                           id="ot4"/>
+          </af:column>
+          <af:column sortProperty="#{bindings.BookBasketVO1.hints.BookRemark.name}" sortable="true"
+                     headerText="#{bindings.BookBasketVO1.hints.BookRemark.label}" id="c5">
+            <af:outputText value="#{row.BookRemark}" shortDesc="#{bindings.BookBasketVO1.hints.BookRemark.tooltip}"
+                           id="ot5"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

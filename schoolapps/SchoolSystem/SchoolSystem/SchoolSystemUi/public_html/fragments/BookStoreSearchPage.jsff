@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="schoolsystemuiBundle" value="#{adfBundle['schoolsystemui.fragments.BookStorePageBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelHeader text="#{schoolsystemuiBundle.BOOK_STORE}" id="ph1">
+      <f:facet name="context"/>
+      <f:facet name="menuBar"/>
+      <f:facet name="toolbar">
+        <af:toolbar id="t3">
+          <af:button text="Basket" id="b2" icon="/images/s_Add.png">
+            <af:showPopupBehavior popupId="p1" triggerType="action"/>
+          </af:button>
+          <af:popup childCreation="deferred" autoCancel="disabled" id="p1" contentDelivery="lazyUncached">
+            <af:panelWindow id="pw1" contentHeight="500" contentWidth="700"
+                            title="Book Basket" stretchChildren="first">
+             
+               <af:panelGroupLayout id="pgl4" layout="vertical">
+                  <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar">
+                  <af:toolbar id="t5">
+                    <af:button text="Allocate" id="b3" action="allocate"
+                               disabled="#{bindings.BookBasketVO1.estimatedRowCount le 0}"/>
+                  </af:toolbar>
+                </f:facet>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.BookBasketVO1.collectionModel}" var="row"
+                              rows="#{bindings.BookBasketVO1.rangeSize}"
+                              emptyText="#{bindings.BookBasketVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.BookBasketVO1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.BookBasketVO1.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.BookBasketVO1.rangeSize}" id="t4">
+                      <af:column sortProperty="#{bindings.BookBasketVO1.hints.BookId.name}" sortable="true"
+                                 headerText="#{bindings.BookBasketVO1.hints.BookId.label}" id="c7">
+                        <af:inputText value="#{row.bindings.BookId.inputValue}"
+                                      label="#{bindings.BookBasketVO1.hints.BookId.label}"
+                                      required="#{bindings.BookBasketVO1.hints.BookId.mandatory}"
+                                      columns="#{bindings.BookBasketVO1.hints.BookId.displayWidth}"
+                                      maximumLength="#{bindings.BookBasketVO1.hints.BookId.precision}"
+                                      shortDesc="#{bindings.BookBasketVO1.hints.BookId.tooltip}" id="it1">
+                          <f:validator binding="#{row.bindings.BookId.validator}"/>
+                          <af:convertNumber groupingUsed="false"
+                                            pattern="#{bindings.BookBasketVO1.hints.BookId.format}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BookBasketVO1.hints.Isbn.name}" sortable="true"
+                                 headerText="#{bindings.BookBasketVO1.hints.Isbn.label}" id="c8">
+                        <af:inputText value="#{row.bindings.Isbn.inputValue}"
+                                      label="#{bindings.BookBasketVO1.hints.Isbn.label}"
+                                      required="#{bindings.BookBasketVO1.hints.Isbn.mandatory}"
+                                      columns="#{bindings.BookBasketVO1.hints.Isbn.displayWidth}"
+                                      maximumLength="#{bindings.BookBasketVO1.hints.Isbn.precision}"
+                                      shortDesc="#{bindings.BookBasketVO1.hints.Isbn.tooltip}" id="it2">
+                          <f:validator binding="#{row.bindings.Isbn.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BookBasketVO1.hints.BookTitle.name}" sortable="true"
+                                 headerText="#{bindings.BookBasketVO1.hints.BookTitle.label}" id="c9">
+                        <af:inputText value="#{row.bindings.BookTitle.inputValue}"
+                                      label="#{bindings.BookBasketVO1.hints.BookTitle.label}"
+                                      required="#{bindings.BookBasketVO1.hints.BookTitle.mandatory}"
+                                      columns="#{bindings.BookBasketVO1.hints.BookTitle.displayWidth}"
+                                      maximumLength="#{bindings.BookBasketVO1.hints.BookTitle.precision}"
+                                      shortDesc="#{bindings.BookBasketVO1.hints.BookTitle.tooltip}" id="it3">
+                          <f:validator binding="#{row.bindings.BookTitle.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BookBasketVO1.hints.BookAuthor.name}" sortable="true"
+                                 headerText="#{bindings.BookBasketVO1.hints.BookAuthor.label}" id="c10">
+                        <af:inputText value="#{row.bindings.BookAuthor.inputValue}"
+                                      label="#{bindings.BookBasketVO1.hints.BookAuthor.label}"
+                                      required="#{bindings.BookBasketVO1.hints.BookAuthor.mandatory}"
+                                      columns="#{bindings.BookBasketVO1.hints.BookAuthor.displayWidth}"
+                                      maximumLength="#{bindings.BookBasketVO1.hints.BookAuthor.precision}"
+                                      shortDesc="#{bindings.BookBasketVO1.hints.BookAuthor.tooltip}" id="it4">
+                          <f:validator binding="#{row.bindings.BookAuthor.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BookBasketVO1.hints.BookRemark.name}" sortable="true"
+                                 headerText="#{bindings.BookBasketVO1.hints.BookRemark.label}" id="c11">
+                        <af:inputText value="#{row.bindings.BookRemark.inputValue}"
+                                      label="#{bindings.BookBasketVO1.hints.BookRemark.label}"
+                                      required="#{bindings.BookBasketVO1.hints.BookRemark.mandatory}"
+                                      columns="#{bindings.BookBasketVO1.hints.BookRemark.displayWidth}"
+                                      maximumLength="#{bindings.BookBasketVO1.hints.BookRemark.precision}"
+                                      shortDesc="#{bindings.BookBasketVO1.hints.BookRemark.tooltip}" id="it5">
+                          <f:validator binding="#{row.bindings.BookRemark.validator}"/>
+                        </af:inputText>
+                      </af:column>
+                      
+                    </af:table>
+                  </af:panelCollection>
+                </af:panelGroupLayout>
+              
+            </af:panelWindow>
+           
+          </af:popup>
+        </af:toolbar>
+      </f:facet>
+      <f:facet name="legend"/>
+      <f:facet name="info"/>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <af:panelGroupLayout layout="vertical" id="pgl3">
+          
+            <af:query id="qryId1" headerText="Search" disclosed="true"
+                      value="#{bindings.SBookSearchCriteriaQuery.queryDescriptor}"
+                      model="#{bindings.SBookSearchCriteriaQuery.queryModel}"
+                      queryListener="#{bindings.SBookSearchCriteriaQuery.processQuery}"
+                      queryOperationListener="#{bindings.SBookSearchCriteriaQuery.processQueryOperation}" rows="2"
+                      maxColumns="2" resultComponentId="::pc1" saveQueryMode="hidden" modeChangeVisible="false"/>
+          
+        </af:panelGroupLayout>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:button actionListener="#{bindings.CreateInsert.execute}" text="Book"
+                         disabled="#{!bindings.CreateInsert.enabled}" id="b1" action="addedit"
+                         icon="/images/s_Add.png"/>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.SBookVO1.collectionModel}" var="row" rows="#{bindings.SBookVO1.rangeSize}"
+                    emptyText="#{bindings.SBookVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    rowBandingInterval="0" selectedRowKeys="#{bindings.SBookVO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.SBookVO1.collectionModel.makeCurrent}" rowSelection="single"
+                    fetchSize="#{bindings.SBookVO1.rangeSize}" id="t1" partialTriggers="::b1">
+            <af:column sortProperty="#{bindings.SBookVO1.hints.Isbn.name}" sortable="true"
+                       headerText="#{bindings.SBookVO1.hints.Isbn.label}" id="c1">
+              <af:outputText value="#{row.Isbn}" shortDesc="#{bindings.SBookVO1.hints.Isbn.tooltip}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.SBookVO1.hints.BookTitle.name}" sortable="true"
+                       headerText="#{bindings.SBookVO1.hints.BookTitle.label}" id="c2">
+              <af:outputText value="#{row.BookTitle}" shortDesc="#{bindings.SBookVO1.hints.BookTitle.tooltip}"
+                             id="ot2"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.SBookVO1.hints.BookAuthor.name}" sortable="true"
+                       headerText="#{bindings.SBookVO1.hints.BookAuthor.label}" id="c3">
+              <af:outputText value="#{row.BookAuthor}" shortDesc="#{bindings.SBookVO1.hints.BookAuthor.tooltip}"
+                             id="ot3"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.SBookVO1.hints.BookRemarks.name}" sortable="true"
+                       headerText="#{bindings.SBookVO1.hints.BookRemarks.label}" id="c4">
+              <af:outputText value="#{row.BookRemarks}" shortDesc="#{bindings.SBookVO1.hints.BookRemarks.tooltip}"
+                             id="ot4"/>
+            </af:column>
+            <af:column sortProperty="#{bindings.SBookVO1.hints.BookPublishDate.name}" sortable="true"
+                       headerText="#{bindings.SBookVO1.hints.BookPublishDate.label}" id="c5">
+              <af:outputText value="#{row.BookPublishDate}"
+                             shortDesc="#{bindings.SBookVO1.hints.BookPublishDate.tooltip}" id="ot5">
+                <af:convertDateTime pattern="#{bindings.SBookVO1.hints.BookPublishDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="#{bindings.SBookVO1.hints.BookTypeCode.name}" sortable="true"
+                       headerText="#{bindings.SBookVO1.hints.BookTypeCode.label}" id="c6">
+              <af:outputText value="#{row.BookTypeCode}" shortDesc="#{bindings.SBookVO1.hints.BookTypeCode.tooltip}"
+                             id="ot6"/>
+            </af:column>
+            <af:column  headerText="Allocation" id="c12">
+                 <af:button text="Add" id="b4"
+                            actionListener="#{backingBeanScope.BookStoreSearchBean.AddToBasketActionListener}"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelGroupLayout>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</ui:composition>

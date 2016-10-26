@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="BookAllocationSearchPagePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SBookReturnVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl"
+              id="SBookReturnVO1Iterator"/>
+    <searchRegion Criteria="SBookReturnSearchCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SBookReturnVO1Iterator" id="SBookReturnSearchCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="SchoolSystemAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="SchoolSystemAMDataControl"/>
+    <tree IterBinding="SBookReturnVO1Iterator" id="SBookReturnVO1">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.SBookReturnVO" Name="SBookReturnVO10">
+        <AttrNames>
+          <Item Value="SId"/>
+          <Item Value="AllocationStartDate"/>
+          <Item Value="AllocationEndDate"/>
+          <Item Value="Remarks"/>
+          <Item Value="LateFees"/>
+          <Item Value="ReturnDate"/>
+          <Item Value="LateFeesFlag"/>
+          <Item Value="BookId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

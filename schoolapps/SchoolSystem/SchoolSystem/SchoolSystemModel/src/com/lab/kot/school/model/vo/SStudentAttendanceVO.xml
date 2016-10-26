@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SStudentAttendanceVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false">
+  <Variable
+    Name="bClassCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="bSectionCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="bSessionCode"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="SClassVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SClassVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SSessionVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SSessionVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SSectionVA"
+    ViewObjectName="com.lab.kot.school.model.vo.SSectionVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_SessionCode"
+    ListVOName="SSessionVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SessionCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SessionCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SessionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SectionCode"
+    ListVOName="SSectionVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SectionCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SectionCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SectionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ClassCode"
+    ListVOName="SClassVA"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ClassCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ClassCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ClassName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SStudentAttendanceEO"
+    Entity="com.lab.kot.school.model.eo.SStudentAttendanceEO"/>
+  <EntityUsage
+    Name="SStudentEO"
+    Entity="com.lab.kot.school.model.eo.SStudentEO"
+    Association="com.lab.kot.school.model.eo.aso.SStudentSStudentAttendanceASO"
+    AssociationEnd="com.lab.kot.school.model.eo.aso.SStudentSStudentAttendanceASO.SStudentEO"
+    SourceUsage="com.lab.kot.school.model.vo.SStudentAttendanceVO.SStudentAttendanceEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.lab.kot.school.model.eo.SStudentAttendanceEO.SId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.lab.kot.school.model.eo.SStudentEO.SId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="SRunningSessionEO"
+    Entity="com.lab.kot.school.model.eo.SRunningSessionEO"
+    Association="com.lab.kot.school.model.eo.aso.SRunningSessionSStudentAttendanceASO"
+    AssociationEnd="com.lab.kot.school.model.eo.aso.SRunningSessionSStudentAttendanceASO.SRunningSessionEO"
+    SourceUsage="com.lab.kot.school.model.vo.SStudentAttendanceVO.SStudentAttendanceEO"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.lab.kot.school.model.eo.SStudentAttendanceEO.SId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.lab.kot.school.model.eo.SRunningSessionEO.SId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="SId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SId"
+    EntityUsage="SStudentAttendanceEO"
+    AliasName="S_ID">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lab.kot.school.model.vo.SStudentAttendanceVO.SId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AttendanceDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AttendanceDate"
+    EntityUsage="SStudentAttendanceEO"
+    AliasName="ATTENDANCE_DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMAT
+          ResId="com.lab.kot.school.model.vo.SStudentAttendanceVO.AttendanceDate_FMT_FORMAT"/>
+        <FMT_FORMATTER
+          ResId="com.lab.kot.school.model.vo.SStudentAttendanceVO.AttendanceDate_FMT_FORMATTER"/>
+        <LABEL
+          ResId="com.lab.kot.school.model.vo.SStudentAttendanceVO.AttendanceDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AttendanceFlag"
+    PrecisionRule="true"
+    EntityAttrName="AttendanceFlag"
+    EntityUsage="SStudentAttendanceEO"
+    AliasName="ATTENDANCE_FLAG">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lab.kot.school.model.vo.SStudentAttendanceVO.AttendanceFlag_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LateFlag"
+    PrecisionRule="true"
+    EntityAttrName="LateFlag"
+    EntityUsage="SStudentAttendanceEO"
+    AliasName="LATE_FLAG"/>
+  <ViewAttribute
+    Name="HolidayFlag"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="HolidayFlag"
+    EntityUsage="SStudentAttendanceEO"
+    AliasName="HOLIDAY_FLAG"/>
+  <ViewAttribute
+    Name="SFirstName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SFirstName"
+    EntityUsage="SStudentEO"
+    AliasName="S_FIRST_NAME"/>
+  <ViewAttribute
+    Name="SId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SId"
+    EntityUsage="SStudentEO"
+    AliasName="SID1"/>
+  <ViewAttribute
+    Name="SLastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SLastName"
+    EntityUsage="SStudentEO"
+    AliasName="S_LAST_NAME"/>
+  <ViewAttribute
+    Name="SMiddleName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SMiddleName"
+    EntityUsage="SStudentEO"
+    AliasName="S_MIDDLE_NAME"/>
+  <ViewAttribute
+    Name="SGender"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SGender"
+    EntityUsage="SStudentEO"
+    AliasName="S_GENDER"/>
+  <ViewAttribute
+    Name="ClassCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ClassCode"
+    EntityUsage="SRunningSessionEO"
+    AliasName="CLASS_CODE"
+    LOVName="LOV_ClassCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SId2"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SId"
+    EntityUsage="SRunningSessionEO"
+    AliasName="SID2"/>
+  <ViewAttribute
+    Name="RollNo"
+    PrecisionRule="true"
+    EntityAttrName="RollNo"
+    EntityUsage="SRunningSessionEO"
+    AliasName="ROLL_NO">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lab.kot.school.model.vo.SStudentAttendanceVO.RollNo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SectionCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SectionCode"
+    EntityUsage="SRunningSessionEO"
+    AliasName="SECTION_CODE"
+    LOVName="LOV_SectionCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SessionCode"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SessionCode"
+    EntityUsage="SRunningSessionEO"
+    AliasName="SESSION_CODE"
+    LOVName="LOV_SessionCode">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MonthDay"
+    PrecisionRule="true"
+    EntityAttrName="MonthDay"
+    EntityUsage="SStudentAttendanceEO"
+    AliasName="MONTH_DAY"/>
+  <ViewCriteria
+    Name="SStudentAttendanceSearchCriteria"
+    ViewObjectName="com.lab.kot.school.model.vo.SStudentAttendanceVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="displayName"
+          ResId="com.lab.kot.school.model.vo.SStudentAttendanceVO.SStudentAttendanceVOCriteria_displayName"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SStudentAttendanceVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ClassCode"
+        ViewAttribute="ClassCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"
+        Value=":bClassCode"
+        IsBindVarValue="true"/>
+      <ViewCriteriaItem
+        Name="SectionCode"
+        ViewAttribute="SectionCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"
+        Value=":bSectionCode"
+        IsBindVarValue="true"/>
+      <ViewCriteriaItem
+        Name="SessionCode"
+        ViewAttribute="SessionCode"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"
+        Value=":bSessionCode"
+        IsBindVarValue="true"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="SId"/>
+    <Item Value="AttendanceDate"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lab.kot.school.model.SchoolSystemModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="smartTemplatePageDef"
+                Package="templates">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SClassVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="SClassVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SClassVO1Iterator" id="ClassId">
+      <AttrNames>
+        <Item Value="ClassId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SClassVO1Iterator" id="ClassCode">
+      <AttrNames>
+        <Item Value="ClassCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SClassVO1Iterator" id="ClassName">
+      <AttrNames>
+        <Item Value="ClassName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SClassVO1Iterator" id="ActiveYn">
+      <AttrNames>
+        <Item Value="ActiveYn"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

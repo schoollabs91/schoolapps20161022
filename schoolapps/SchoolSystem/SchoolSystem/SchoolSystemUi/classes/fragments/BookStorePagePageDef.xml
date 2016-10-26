@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="BookStorePagePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="templates.smartTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SBookVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="SBookVO1Iterator"/>
+    <searchRegion Criteria="SBookSearchCriteria" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SBookVO1Iterator" id="SBookSearchCriteriaQuery"/>
+    <iterator Binds="BookBasketVO1" RangeSize="25" DataControl="SchoolSystemAMDataControl" id="BookBasketVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SBookVO1Iterator" id="SBookVO1">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.SBookVO" Name="SBookVO10">
+        <AttrNames>
+          <Item Value="Isbn"/>
+          <Item Value="BookTitle"/>
+          <Item Value="BookAuthor"/>
+          <Item Value="BookRemarks"/>
+          <Item Value="BookPublishDate"/>
+          <Item Value="BookTypeCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SBookVO1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="BookBasketVO1Iterator" id="BookBasketVO1">
+      <nodeDefinition DefName="com.lab.kot.school.model.vo.BookBasketVO" Name="BookBasketVO10">
+        <AttrNames>
+          <Item Value="BookId"/>
+          <Item Value="Isbn"/>
+          <Item Value="BookTitle"/>
+          <Item Value="BookAuthor"/>
+          <Item Value="BookRemark"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

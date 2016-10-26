@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <WildcardControlFlowRule
+      id="WildcardControlFlowRule2">
+      <property
+         name="activityId">*</property>
+      <property
+         name="y">128.29883</property>
+      <property
+         name="x">92.0</property>
+   </WildcardControlFlowRule>
+   <View
+      id="View3">
+      <property
+         name="activityId">TeacherPage</property>
+      <property
+         name="page">/pages/TeacherPage.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>TeacherPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">105.79883</property>
+      <property
+         name="x">300.02344</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">TeacherAttendPage</property>
+      <property
+         name="page">/pages/TeacherAttendPage.jsf</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>TeacherAttendPage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">233.09766</property>
+      <property
+         name="x">306.37012</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="WildcardControlFlowRule2"
+      to="View3">
+      <property
+         name="fromOutcome">TeacherPage</property>
+      <property
+         name="sdm:polyPoints">R50,128.0,128.44824,259.02344,105.44824,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="WildcardControlFlowRule2"
+      to="View4">
+      <property
+         name="fromOutcome">TeacherAttendPage</property>
+      <property
+         name="sdm:polyPoints">R55,128.0,131.94824,265.37012,232.74707,L50</property>
+   </ControlFlowCase>
+</SDM>

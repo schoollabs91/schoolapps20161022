@@ -1,0 +1,357 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+af|panelBox {
+  
+  border-radius: 0px;
+  -tr-header-height: 25px;
+  -tr-draggable-header-height: 25px;      
+}
+
+af|panelBox::content {
+  border-top-style: solid; 
+  border-top-color: #1D4A71; 
+  border-top-width: medium; 
+  padding: 10px 0px 10px 0px;  
+  }
+
+af|panelGroupLayout {
+    background-color: White; 
+}
+
+af|panelHeader::title0 {
+    background-color: #F1F5F6; 
+    border-color: #C9CED5; 
+    border-width: 1px;
+    border-style:solid ;
+}
+af|panelHeader::title1 {
+    background-color: #F1F5F6; 
+    border-color: #C9CED5; 
+    border-width: 1px;
+    border-style:solid ;
+    height: 25px; 
+}
+
+af|panelHeader::title2 {
+    background-color: #F1F5F6; 
+    border-color: #C9CED5; 
+    border-width: 1px;
+    border-style:solid ;
+    height: 20px; 
+}
+
+af|panelHeader::title3 {
+    background-color: #F1F5F6; 
+    border-color: #C9CED5; 
+    border-width: 1px;
+    border-style:solid ;
+    height: 15px; 
+}
+af|panelHeader::title4 {
+    background-color: #F1F5F6; 
+    border-color: #C9CED5; 
+    border-width: 1px;
+    border-style:solid ;
+    height: 10px; 
+}
+af|panelHeader {    
+    padding: 1px 1px 1px 1px;     
+}
+af|panelHeader.level1 {
+    border-color: #1D4A71; 
+    border-top-width: 3px;
+    border-left-width: 0px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;    
+    border-style:solid ;
+    padding: 1px 1px 1px 1px;     
+}
+
+af|panelHeader.level1Opaque {
+    border-color: #1D4A71; 
+    border-top-width: 3px;
+    border-left-width: 0px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    opacity: 0.1;
+    border-style:solid ;
+    padding: 1px 1px 1px 1px;     
+}
+
+af|panelHeader::title-text0 {
+    color: #BA691A; 
+}
+af|panelHeader::title-text1 {
+    color: #BA691A; 
+}
+
+af|query::title0 {
+    background-color: GrayText; 
+}
+
+af|toolbox::body {
+    background-color: #c3c3c3; 
+    
+}
+
+af|button::link {
+    border-collapse: separate; 
+}
+
+af|query::disclosure-link {
+    display: none; 
+}
+
+af|query::disclosure-icon-style {
+    display: none; 
+}
+
+af|query::disclosed-icon-style {
+    display: none; 
+}
+
+af|query::content0 {
+    border-top-style: solid; 
+    border-top-color: WindowText; 
+    border-top-width: thick; 
+}
+
+af|query::title1 {
+    background-color: transparent; 
+    border-bottom-style: solid; 
+    border-bottom-width: medium; 
+    border-bottom-color: #bdbdbd; 
+}
+
+af|panelSplitter::horizontal-icon-style {
+    width: 1px; 
+       display: none; 
+}
+
+af|panelSplitter::horizontal-restore-icon {
+    width: 1px; 
+    display: none; 
+}
+
+af|panelSplitter::horizontal-divider {
+    display: none; 
+    
+}
+
+af|panelSplitter::horizontal-icon-container {
+    display: none; 
+}
+
+af|panelSplitter::horizontal-icon-style {
+    display: none; 
+    width: 1px; 
+}
+
+af|panelSplitter::horizontal-collapse-icon {
+    display: none; 
+    width: 1px; 
+}
+
+af|panelSplitter::horizontal-highlighter {
+    display: none; 
+    background-color: InactiveCaption; 
+}
+
+af|panelSplitter::horizontal-divider:disclosed:positioned-from-end af|panelSplitter::horizontal-icon-style {
+    display: none; 
+}
+
+af|panelSplitter::horizontal-divider:positioned-from-end af|panelSplitter::horizontal-highlighter {
+    display: none; 
+}
+
+af|panelSplitter::horizontal-divider:disclosed af|panelSplitter::horizontal-icon-style {
+    display: none; 
+}
+
+af|panelBox::disclosed-icon-style {
+    /*display: none;*/ 
+}
+af|button {    
+    border: 1px solid #1D4A71; 
+}
+
+af|button::link {
+   
+}
+
+af|button::text {
+   
+    font-size: medium; 
+    font-weight: lighter; 
+}
+af|inputText::content {
+    
+    
+    }
+
+af|inputText::content:focus {
+    border:1px solid #1D4A71;     
+    }
+    
+af|inputDate::content {
+   
+    }
+
+af|inputDate::content:focus {
+    border:1px solid #1D4A71; 
+   
+    }
+
+af|link {
+    color: #1D4A71; 
+    font-size: small; 
+    font-weight: bolder; 
+}
+
+af|panelAccordion::header {
+    background-color: #1D4A71; 
+    -tr-header-height: 10px;
+  -tr-draggable-header-height: 10px;    
+}
+
+.AFPanelAccordionHeaderBackground:alias {
+    
+}
+
+af|panelAccordion::header-subsequent {
+    
+}
+
+af|panelAccordion::header-disclose {
+    
+}
+
+af|panelAccordion::disclosed-icon-style {
+    /*background-image: url("../../images/_plus.png");*/ 
+}
+af|panelAccordion::disclosed-icon-style:focus {
+    /*background-image: url("../../images/_plus.png");*/ 
+}
+af|panelAccordion::undisclosed-icon-style {
+    /*background-image: url("../../images/_plus.png");*/ 
+}
+af|panelAccordion::undisclosed-icon-style:focus {
+    /*background-image: url("../../images/_plus.png");*/ 
+}
+af|selectOneChoice::content {
+  
+    
+}
+
+af|selectOneChoice::dropdown-panel {
+    border:1px solid #1D4A71;
+    
+}
+
+af|selectOneChoice::content:focus {
+    border:1px solid #1D4A71; 
+    
+    }
+
+af|selectOneChoice::content-border {
+    
+}
+af|query::criterion af|selectOneChoice::content{
+  /*required to fix the alignment issue*/
+  
+}
+
+af|panelHeader af|selectOneChoice::content{
+    
+}
+af|panelBox af|selectOneChoice::content{
+    
+}
+
+
+
+af|selectBooleanCheckbox::selected-icon {
+    /*content: url("../../images/checkbox-checked.png");*/ 
+   
+}
+
+af|table::data-row af|selectBooleanCheckbox::content {
+    background-color: transparent; 
+}
+
+af|table::data-row af|selectBooleanCheckbox::content-input {
+    background-color: #1D4A71; 
+    border:2px solid #1D4A71;
+}
+
+af|table::data-row af|selectBooleanCheckbox::content-input:focus {
+    background-color: #1D4A71; 
+    border:4px solid #1D4A71;
+}
+
+af|selectBooleanCheckbox::native-input {
+    background-color: #1D4A71; 
+   
+}
+
+af|column::column-header af|selectBooleanCheckbox::content-input {
+    background-color: #1D4A71; 
+    border:2px solid #1D4A71; 
+}
+af|column::column-header af|selectBooleanCheckbox::content-input {
+    background-color: #1D4A71; 
+    border:4px solid #1D4A71; 
+}
+
+af|inputText::label {
+    font-size: x-small; 
+}
+
+af|Table af|inputText::label {
+    font-size: x-small; 
+}
+af|Table af|outputText::label {
+    font-size: x-small; 
+}
+af|Query af|selectOneChoice::label{
+    font-size: x-small; 
+}
+
+af|Query af|selectOneChoice::content{
+    font-size: x-small; 
+}
+af|Query af|selectOneChoice::content:focus{
+    font-size: small; 
+}
+
+af|Query af|inputText::label{
+    font-size: x-small; 
+}
+
+af|Query af|inputText::content{
+    font-size: x-small; 
+}
+af|Query af|inputText::content:focus{
+    font-size: small; 
+}
+
+af|inputDate::label {
+    font-size: xx-small; 
+}
+
+af|inputDate:disabled::label {
+    font-size: xx-small; 
+}
+
+af|inputDate:required::label {
+    font-size: xx-small; 
+}
+
+af|image {
+    height: 200px; 
+    width: 160px; 
+}

@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="panelHeader 1" id="ph1">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical"/>
+  </af:panelHeader>
+  <af:panelGroupLayout layout="vertical" id="pgl2">
+    <af:panelHeader text="SExamTimeTableEO" id="ph2">
+      <af:query id="qryId1" headerText="Search" disclosed="true"
+                value="#{bindings.SExamTimeTableVOCriteriaQuery.queryDescriptor}"
+                model="#{bindings.SExamTimeTableVOCriteriaQuery.queryModel}"
+                queryListener="#{bindings.SExamTimeTableVOCriteriaQuery.processQuery}"
+                queryOperationListener="#{bindings.SExamTimeTableVOCriteriaQuery.processQueryOperation}"
+                resultComponentId="::resId1"/>
+    </af:panelHeader>
+    <af:table value="#{bindings.SExamTimeTableVO1.collectionModel}" var="row"
+              rows="#{bindings.SExamTimeTableVO1.rangeSize}"
+              emptyText="#{bindings.SExamTimeTableVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              rowBandingInterval="0" selectedRowKeys="#{bindings.SExamTimeTableVO1.collectionModel.selectedRow}"
+              selectionListener="#{bindings.SExamTimeTableVO1.collectionModel.makeCurrent}" rowSelection="single"
+              fetchSize="#{bindings.SExamTimeTableVO1.rangeSize}" id="resId1">
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.SDate.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.SDate.label}" id="resId1c1">
+        <af:outputText value="#{row.SDate}" shortDesc="#{bindings.SExamTimeTableVO1.hints.SDate.tooltip}" id="ot1">
+          <af:convertDateTime pattern="#{bindings.SExamTimeTableVO1.hints.SDate.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.SDay.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.SDay.label}" id="resId1c2">
+        <af:outputText value="#{row.SDay}" shortDesc="#{bindings.SExamTimeTableVO1.hints.SDay.tooltip}" id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.SubjectCode.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.SubjectCode.label}" id="resId1c3">
+        <af:outputText value="#{row.SubjectCode}" shortDesc="#{bindings.SExamTimeTableVO1.hints.SubjectCode.tooltip}"
+                       id="ot3"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.PaperCode.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.PaperCode.label}" id="resId1c4">
+        <af:outputText value="#{row.PaperCode}" shortDesc="#{bindings.SExamTimeTableVO1.hints.PaperCode.tooltip}"
+                       id="ot4"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.ClassCode.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.ClassCode.label}" id="resId1c5">
+        <af:outputText value="#{row.ClassCode}" shortDesc="#{bindings.SExamTimeTableVO1.hints.ClassCode.tooltip}"
+                       id="ot5"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.ExamType.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.ExamType.label}" id="resId1c6">
+        <af:outputText value="#{row.ExamType}" shortDesc="#{bindings.SExamTimeTableVO1.hints.ExamType.tooltip}"
+                       id="ot6"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.TimeSlotFrom.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.TimeSlotFrom.label}" id="resId1c7">
+        <af:outputText value="#{row.TimeSlotFrom}" shortDesc="#{bindings.SExamTimeTableVO1.hints.TimeSlotFrom.tooltip}"
+                       id="ot7"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.TimeSlotTo.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.TimeSlotTo.label}" id="resId1c8">
+        <af:outputText value="#{row.TimeSlotTo}" shortDesc="#{bindings.SExamTimeTableVO1.hints.TimeSlotTo.tooltip}"
+                       id="ot8"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.SExamTimeTableVO1.hints.SessionCode.name}" sortable="true"
+                 headerText="#{bindings.SExamTimeTableVO1.hints.SessionCode.label}" id="resId1c9">
+        <af:outputText value="#{row.SessionCode}" shortDesc="#{bindings.SExamTimeTableVO1.hints.SessionCode.tooltip}"
+                       id="ot9"/>
+      </af:column>
+    </af:table>
+  </af:panelGroupLayout>
+</ui:composition>

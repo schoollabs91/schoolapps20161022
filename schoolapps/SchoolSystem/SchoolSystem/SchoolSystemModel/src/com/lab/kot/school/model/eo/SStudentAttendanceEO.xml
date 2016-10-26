@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SStudentAttendanceEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="S_STUDENT_ATTENDANCE"
+  AliasName="SStudentAttendanceEO"
+  BindingStyle="JDBC">
+  <Attribute
+    Name="SId"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="S_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_STUDENT_ATTENDANCE"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AttendanceDate"
+    IsNotNull="true"
+    ColumnName="ATTENDANCE_DATE"
+    SQLType="DATE"
+    Type="java.sql.Date"
+    ColumnType="DATE"
+    TableName="S_STUDENT_ATTENDANCE"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="AttendanceFlag"
+    Precision="1"
+    ColumnName="ATTENDANCE_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_STUDENT_ATTENDANCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LateFlag"
+    Precision="1"
+    ColumnName="LATE_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_STUDENT_ATTENDANCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HolidayFlag"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="HOLIDAY_FLAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="S_STUDENT_ATTENDANCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MonthDay"
+    Precision="2"
+    Scale="0"
+    ColumnName="MONTH_DAY"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="S_STUDENT_ATTENDANCE"/>
+  <AccessorAttribute
+    Name="SStudentEO"
+    Association="com.lab.kot.school.model.eo.aso.SStudentSStudentAttendanceASO"
+    AssociationEnd="com.lab.kot.school.model.eo.aso.SStudentSStudentAttendanceASO.SStudentEO"
+    AssociationOtherEnd="com.lab.kot.school.model.eo.aso.SStudentSStudentAttendanceASO.SStudentAttendanceEO"
+    Type="com.lab.kot.school.model.eo.SStudentEOImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SRunningSessionEO"
+    Association="com.lab.kot.school.model.eo.aso.SRunningSessionSStudentAttendanceASO"
+    AssociationEnd="com.lab.kot.school.model.eo.aso.SRunningSessionSStudentAttendanceASO.SRunningSessionEO"
+    AssociationOtherEnd="com.lab.kot.school.model.eo.aso.SRunningSessionSStudentAttendanceASO.SStudentAttendanceEO"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SStudentAttendancePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="S_STUDENT_ATTENDANCE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lab.kot.school.model.eo.SStudentAttendanceEO.SId"/>
+      <Item Value="com.lab.kot.school.model.eo.SStudentAttendanceEO.AttendanceDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SStudentAttendanceEO">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="S_STUDENT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SSTUDENT_ATTENDANCE_EO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lab.kot.school.model.eo.SStudentAttendanceEO.SId"/>
+    </AttrArray>
+  </Key>
+</Entity>
